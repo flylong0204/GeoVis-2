@@ -1,0 +1,959 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"const",
+				"constructor	keyword"
+			],
+			[
+				"vec",
+				"Vector3	class"
+			],
+			[
+				"Vect",
+				"Vector3	class"
+			],
+			[
+				"cir",
+				"circleMouseOut"
+			],
+			[
+				"crea",
+				"createElementNS"
+			],
+			[
+				"po",
+				"poly"
+			],
+			[
+				"stro",
+				"stroke"
+			],
+			[
+				"c",
+				"cx"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "scripts/core/core.ts",
+			"settings":
+			{
+				"buffer_size": 689,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/iVisDesigner/scripts/utils/events.js",
+			"settings":
+			{
+				"buffer_size": 6715,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Edgar/Desktop/script.txt",
+			"settings":
+			{
+				"buffer_size": 517,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/jquery.d.ts",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "geovismain/scripts/geovismain.ts",
+			"settings":
+			{
+				"buffer_size": 142,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "{\n	\"cmd\": [\"make\"]\n}\n",
+			"settings":
+			{
+				"buffer_size": 21,
+				"line_ending": "Windows",
+				"name": "untitled.sublime-build"
+			}
+		},
+		{
+			"file": "/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/User/typescript.sublime-build",
+			"settings":
+			{
+				"buffer_size": 224,
+				"line_ending": "Windows",
+				"name": "untitled.sublime-build"
+			}
+		},
+		{
+			"file": "weathervis/scripts/weathervis.ts",
+			"settings":
+			{
+				"buffer_size": 50,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/widgets/widgets.ts",
+			"settings":
+			{
+				"buffer_size": 395,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/core/property.ts",
+			"settings":
+			{
+				"buffer_size": 124,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "library/three.d.ts",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/DefinitelyTyped/threejs/three.d.ts",
+			"settings":
+			{
+				"buffer_size": 180304,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "library/three.js",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/User/typescript.sublime-build",
+	"command_palette":
+	{
+		"height": 35.0,
+		"selected_items":
+		[
+			[
+				"Package Control: add",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"typescript",
+				"Set Syntax: AppleScript"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/TypeScript/TypeScript.tmLanguage",
+		"/E/reforecast15/video_for_paper/preview/vis15_withspeech/vis15_withspeech.html",
+		"/E/reforecast15/video_for_paper/preview/vis15_mac/vis15_mac.html",
+		"/E/geovis/library/three.js",
+		"/E/geovis/scripts/core/property.ts",
+		"/C/Users/Edgar/Desktop/tts随心听(文字语音转换器) v10.2最新版/安装必看.txt",
+		"/E/reforecast15/video_for_paper/preview/vis15/vis15.html",
+		"/E/reforecast15/video_for_paper/preview/vis15_noau/vis15_noau.html",
+		"/E/Test/geovis/geovismain/views.py",
+		"/C/Users/Edgar/Downloads/eclipse-typescript-master/eclipse-typescript-master/README.md",
+		"/E/Web Learning/force.html",
+		"/E/Web Learning/test.html",
+		"/E/iVisDesigner/html/toolkit.html",
+		"/E/geovis/geovismain/static/scripts/jquery.d.ts",
+		"/E/iVisDesigner/server/ivapp/serializers.py",
+		"/E/iVisDesigner/server/ivapp/models.py",
+		"/E/iVisDesigner/scripts/toolkit.js",
+		"/E/iVisDesigner/scripts/core/objects/basic.js",
+		"/E/iVisDesigner/scripts/core/objects/component.js",
+		"/E/iVisDesigner/scripts/utils/events.js",
+		"/E/iVisDesigner/scripts/core/objects/geometry.js",
+		"/E/geovis/library/numeric-1.2.6.js",
+		"/E/iVisDesigner/scripts/core/objects/shapes.js",
+		"/E/Test/geovis/geovis/settings.py",
+		"/E/Test/geovis/geovis/urls.py",
+		"/E/Test/geovis/geovis/wsgi.py",
+		"/E/Test/geovis/geovismain/urls.py",
+		"/E/Test/geovis/geovismain/__init__.py",
+		"/E/iVisDesigner/server/ivapp/views.py",
+		"/E/iVisDesigner/server/server/urls.py",
+		"/E/iVisDesigner/scripts/client/twisted.js",
+		"/E/iVisDesigner/scripts/client/saveload.js",
+		"/E/iVisDesigner/scripts/api/common.js",
+		"/E/iVisDesigner/scripts/core/path.js",
+		"/E/iVisDesigner/scripts/interface/modal.js",
+		"/E/iVisDesigner/scripts/core/vis.js",
+		"/E/iVisDesigner/scripts/utils/autoalign.js",
+		"/E/iVisDesigner/scripts/utils/expression.js",
+		"/E/iVisDesigner/scripts/core/workspace.js",
+		"/E/iVisDesigner/scripts/editor/objectlist.js",
+		"/E/iVisDesigner/scripts/editor/workspace.js",
+		"/E/iVisDesigner/scripts/editor/editor.js",
+		"/E/iVisDesigner/scripts/client/client.js",
+		"/E/iVisDesigner/scripts/client/nested.js",
+		"/E/iVisDesigner/scripts/client/ajax.js",
+		"/E/iVisDesigner/scripts/client/utils.js",
+		"/E/iVisDesigner/SConstruct",
+		"/E/iVisDesigner/scripts/interface/interface.js",
+		"/E/iVisDesigner/scripts/utils/utils.js",
+		"/E/iVisDesigner/scripts/utils/uuid.js",
+		"/E/iVisDesigner/scripts/utils/template.js",
+		"/E/iVisDesigner/scripts/utils/binds.js",
+		"/E/iVisDesigner/scripts/utils/storage.js",
+		"/E/iVisDesigner/scripts/utils/functional.js",
+		"/E/iVisDesigner/scripts/utils/formatting.js",
+		"/E/iVisDesigner/scripts/utils/i18n.js",
+		"/E/iVisDesigner/scripts/utils/math.js",
+		"/E/iVisDesigner/scripts/utils/misc.js",
+		"/E/iVisDesigner/scripts/utils/oop.js",
+		"/E/iVisDesigner/scripts/utils/packing.js",
+		"/E/iVisDesigner/scripts/utils/parser.pegjs",
+		"/E/iVisDesigner/scripts/utils/sha1.js",
+		"/E/iVisDesigner/scripts/utils/colors.js",
+		"/E/iVisDesigner/scripts/node/wrappers.js",
+		"/E/iVisDesigner/scripts/core/core.js",
+		"/E/iVisDesigner/scripts/core/data.js",
+		"/E/iVisDesigner/scripts/core/render.js",
+		"/E/iVisDesigner/scripts/core/actionmanager.js",
+		"/E/iVisDesigner/scripts/api/dataprovider.js",
+		"/E/iVisDesigner/scripts/core/objects/objects.js",
+		"/E/iVisDesigner/scripts/interface/menu.js",
+		"/E/iVisDesigner/scripts/interface/controls.js",
+		"/E/iVisDesigner/scripts/interface/panel.js",
+		"/E/iVisDesigner/scripts/interface/panels/panels.js",
+		"/E/iVisDesigner/scripts/node/transport.js",
+		"/E/iVisDesigner/scripts/interface/popup.js",
+		"/E/iVisDesigner/scripts/interface/utils.js",
+		"/E/iVisDesigner/scripts/core/objects/layout.js",
+		"/E/iVisDesigner/scripts/core/objects/map.js",
+		"/E/iVisDesigner/scripts/core/serializer.js",
+		"/E/Test/DjangoWebProject1/DjangoWebProject1/DjangoWebProject1.pyproj",
+		"/E/Test/DjangoWebProject1/DjangoWebProject1/manage.py",
+		"/E/Test/DjangoWebProject1/DjangoWebProject1/app/mewtp.ts",
+		"/E/Test/DjangoWebProject1/DjangoWebProject1/app/mewtp.js",
+		"/E/iVisDesigner/scripts/client/user.js",
+		"/E/iVisDesigner/server/websocket/wamp.py",
+		"/E/iVisDesigner/scripts/interface/u",
+		"/E/iVisDesigner/scripts/strings/strings.yaml",
+		"/E/iVisDesigner/config.js.template",
+		"/E/iVisDesigner/archive.py",
+		"/E/iVisDesigner/server/README.md",
+		"/E/iVisDesigner/server/controller",
+		"/E/iVisDesigner/README.md",
+		"/E/iVisDesigner/CREDITS.md",
+		"/E/iVisDesigner/server/server.tac",
+		"/E/iVisDesigner/html/embed_test.html",
+		"/E/iVisDesigner/version.py",
+		"/E/iVisDesigner/TODO.md",
+		"/C/Users/Edgar/AppData/Roaming/SumatraPDF/SumatraPDF-settings.txt",
+		"/C/Users/Edgar/Downloads/robots.txt",
+		"/C/Users/Edgar/Downloads/新建文本文档.txt",
+		"/E/draft_vis15_hongsen/vgtc.cls",
+		"/C/Users/Edgar/Desktop/robots.txt",
+		"/C/Users/Edgar/Desktop/hosts",
+		"/Y/Others/un_papers.txt",
+		"/E/weathervissite/.myumldata",
+		"/E/BaiduYun/Paper Review/ChinaVis15/file192-1.txt",
+		"/E/BaiduYun/Paper Review/ChinaVis15/review_paper192.txt",
+		"/E/review_paper192.txt",
+		"/E/geovis/geovismain/template/geovismain/index.html",
+		"/C/Users/Edgar/Desktop/BingSiteAuth.xml",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/E/BaiduYun/Paper Review/TVCG/TVCG-2015-04-0099/Reivew-TVCG-2015-04-0099.txt",
+		"/E/BaiduYun/Paper Review/JCAD/用辐状节点链接图可视化分析网络安全数据.txt",
+		"/E/BaiduYun/Paper Review/JCAD/review.txt",
+		"/C/Users/Edgar/Downloads/360wljk/使用说明.txt"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"git",
+			"addEvent",
+			"start",
+			"IV.server",
+			"generate_pagination",
+			"content",
+			"NS.",
+			"NS",
+			"Iv.on",
+			"raise",
+			"new / open",
+			"start",
+			"toolkit.start",
+			"new",
+			"command",
+			"data-",
+			"data-command",
+			"exe",
+			"instant",
+			"config.js",
+			"()",
+			"166.111.80.194",
+			"conf",
+			"thanks",
+			"\\author",
+			"author",
+			"166.111.80.194"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"cgcad.thss.tsinghua.edu.cn/vis"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "scripts/core/core.ts",
+					"settings":
+					{
+						"buffer_size": 689,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								452,
+								452
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/E/iVisDesigner/scripts/utils/events.js",
+					"settings":
+					{
+						"buffer_size": 6715,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6715,
+								6715
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1305.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/Edgar/Desktop/script.txt",
+					"settings":
+					{
+						"buffer_size": 517,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								517,
+								517
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "scripts/jquery.d.ts",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "geovismain/scripts/geovismain.ts",
+					"settings":
+					{
+						"buffer_size": 142,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								142,
+								142
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"settings":
+					{
+						"buffer_size": 21,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								21,
+								21
+							]
+						],
+						"settings":
+						{
+							"default_dir": "C:\\Users\\Edgar\\AppData\\Roaming\\Sublime Text 2\\Packages\\User",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/User/typescript.sublime-build",
+					"settings":
+					{
+						"buffer_size": 224,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								224,
+								224
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "weathervis/scripts/weathervis.ts",
+					"settings":
+					{
+						"buffer_size": 50,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								45,
+								45
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "scripts/widgets/widgets.ts",
+					"settings":
+					{
+						"buffer_size": 395,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								368,
+								368
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "scripts/core/property.ts",
+					"settings":
+					{
+						"buffer_size": 124,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13,
+								13
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "library/three.d.ts",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "/E/DefinitelyTyped/threejs/three.d.ts",
+					"settings":
+					{
+						"buffer_size": 180304,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								738,
+								738
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "library/three.js",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 62485.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.exec":
+	{
+		"height": 155.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"three",
+				"DefinitelyTyped/threejs/three.d.ts"
+			],
+			[
+				"th",
+				"geovis/library/three.js"
+			],
+			[
+				"three.js",
+				"geovis/library/three.js"
+			],
+			[
+				"three.d.",
+				"DefinitelyTyped/threejs/three.d.ts"
+			],
+			[
+				"ge",
+				"geovis/geovismain/scripts/geovismain.ts"
+			],
+			[
+				"loa",
+				"/E/iVisDesigner/scripts/client/saveload.js"
+			],
+			[
+				"load",
+				"/E/iVisDesigner/scripts/client/saveload.js"
+			],
+			[
+				"seri",
+				"/E/iVisDesigner/scripts/core/serializer.js"
+			],
+			[
+				"cor",
+				"/E/iVisDesigner/scripts/core/core.js"
+			],
+			[
+				"vis",
+				"/E/iVisDesigner/scripts/core/vis.js"
+			],
+			[
+				"tooki",
+				"/E/iVisDesigner/scripts/toolkit.js"
+			],
+			[
+				"to",
+				"/E/iVisDesigner/html/toolkit.html"
+			],
+			[
+				"editor",
+				"/E/iVisDesigner/scripts/editor/objectlist.js"
+			],
+			[
+				"took",
+				"/E/iVisDesigner/scripts/toolkit.js"
+			],
+			[
+				"wo",
+				"/E/iVisDesigner/scripts/core/workspace.js"
+			],
+			[
+				"t",
+				"/E/iVisDesigner/scripts/toolkit.js"
+			],
+			[
+				"event",
+				"/E/iVisDesigner/scripts/utils/events.js"
+			],
+			[
+				"uti",
+				"/E/iVisDesigner/scripts/utils/utils.js"
+			],
+			[
+				"twis",
+				"/E/iVisDesigner/scripts/client/twisted.js"
+			],
+			[
+				"neste",
+				"/E/iVisDesigner/scripts/client/nested.js"
+			],
+			[
+				"twi",
+				"/E/iVisDesigner/scripts/client/twisted.js"
+			],
+			[
+				"contro",
+				"/E/iVisDesigner/scripts/interface/controls.js"
+			],
+			[
+				"iterfa",
+				"/E/iVisDesigner/scripts/interface/utils.js"
+			],
+			[
+				"inter",
+				"/E/iVisDesigner/scripts/interface/interface.js"
+			],
+			[
+				"sc",
+				"/E/iVisDesigner/SConstruct"
+			],
+			[
+				"too",
+				"/E/iVisDesigner/scripts/toolkit.js"
+			],
+			[
+				"auto",
+				"/E/iVisDesigner/scripts/utils/autoalign.js"
+			],
+			[
+				"mis",
+				"/E/iVisDesigner/scripts/utils/misc.js"
+			],
+			[
+				"i18",
+				"/E/iVisDesigner/scripts/utils/i18n.js"
+			],
+			[
+				"bin",
+				"/E/iVisDesigner/scripts/utils/binds.js"
+			],
+			[
+				"eve",
+				"/E/iVisDesigner/scripts/utils/events.js"
+			],
+			[
+				"fun",
+				"/E/iVisDesigner/scripts/utils/functional.js"
+			],
+			[
+				"",
+				"/E/iVisDesigner/scripts/client/twisted.js"
+			],
+			[
+				"nest",
+				"/E/iVisDesigner/scripts/client/nested.js"
+			],
+			[
+				"sa",
+				"/E/iVisDesigner/scripts/client/saveload.js"
+			],
+			[
+				"ub",
+				"/E/iVisDesigner/scripts/utils/binds.js"
+			],
+			[
+				"core",
+				"/E/iVisDesigner/scripts/core/core.js"
+			],
+			[
+				"edi",
+				"/E/iVisDesigner/scripts/interface/interface.js"
+			],
+			[
+				"w",
+				"/E/iVisDesigner/scripts/core/workspace.js"
+			],
+			[
+				"s",
+				"/E/iVisDesigner/SConstruct"
+			],
+			[
+				"action",
+				"/E/iVisDesigner/scripts/core/actionmanager.js"
+			],
+			[
+				"serie",
+				"/E/iVisDesigner/scripts/core/serializer.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 256.0,
+	"status_bar_visible": true
+}

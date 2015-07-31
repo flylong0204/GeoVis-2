@@ -1,0 +1,1 @@
+{"version":3,"file":"weathervis.js","sourceRoot":"","sources":["weathervis.ts"],"names":["WeatherVis","WeatherVis.LodMap","WeatherVis.LodMap.constructor"],"mappings":"AAAA,IAAO,UAAU,CAIhB;AAJD,WAAO,UAAU,EAAC,CAAC;IAClBA;QAAAC;QAEAC,CAACA;QAADD,aAACA;IAADA,CAACA,AAFDD,IAECA;IAFYA,iBAAMA,SAElBA,CAAAA;AACFA,CAACA,EAJM,UAAU,KAAV,UAAU,QAIhB"}
