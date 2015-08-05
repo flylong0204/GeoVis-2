@@ -1,15 +1,67 @@
-<html>
-<head>
-</head>
+{% extends "main/layout.html" %}
 
-<body>
-<div id='menu_div'></div>
-<div id='tool_div'></div>
-<div id='map_div'></div>
-<div id='stream_div'></div>
-</body>
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.js"></script>
+{% block content %}
+<div id='tool-div' class='panel-border tool-panel'>
+	
+</div>
+<div id='map-div' class='map-panel'></div>
+<div id='stream-div' class='panel-border stream-panel'></div>
+
+{% endblock %}
+
+{% block scripts %}
 <script type="text/javascript" src='/static/d3.v3.js'></script>
+<script type="text/javascript" src='/static/topojson.js'></script>
+<script type="text/javascript" src="/static/scripts/utility.js"></script>
+<script type="text/javascript" src="/static/scripts/widgets.js"></script>
+<script type="text/javascript" src="/static/scripts/functionpanel.js"></script>
+<script type="text/javascript" src="/static/scripts/renderingboard.js"></script>
 <script type="text/javascript" src="/static/weathervis/scripts/lodglyphmap.js"></script>
 <script type="text/javascript" src="/static/weathervis/scripts/weathervis.js"></script>
+<script type="text/javascript">
+	var Dragging = function(){
+		var selectedObj = null;
+		
+        function mouseDownHandler(e) {
+        	selectedObj = retrieveParentDiv(e.target);
+        	if (selectedObj == null) return;
+        	GeoVis.Utility.eventMapper.raiseEvent(selectedObj.id, 'mousedown', e);
+        };
+        
+        function mouseMoveHandler(e) {
+        	if (selectedObj == null) return;
+        	GeoVis.Utility.eventMapper.raiseEvent(selectedObj.id, 'mousemove', e);
+        };
+        
+        function mouseUpHandler(e) {
+        	if (selectedObj == null) return;
+        	GeoVis.Utility.eventMapper.raiseEvent(selectedObj.id, 'mouseup', e);
+        	selectedObj = null;
+        };
+        
+        return {
+            enable:function(){
+                document.addEventListener('mousedown', mouseDownHandler);
+                document.addEventListener('mousemove', mouseMoveHandler);
+                document.addEventListener('mouseup', mouseUpHandler);
+            },
+            disable:function(){
+                document.removeEventListener('mousedown', mouseDownHandler);
+                document.removeEventListener('mousemove', mouseMoveHandler);
+                document.removeEventListener('mouseup', mouseUpHandler);
+            }
+        }
+        
+        function retrieveParentDiv(obj){
+        	
+        	while (obj !== null && obj.tagName !== 'DIV')
+        		obj = obj.parentNode;
+        	return obj;
+        }
+    }
+    
+    Dragging().enable();
+</script>
+{% endblock %}
+
 </html>

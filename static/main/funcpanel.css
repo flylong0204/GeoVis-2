@@ -1,0 +1,51 @@
+.panel-border {
+	border-color: rgb(200, 200, 200);
+	display: block;
+}
+
+.panel-title {
+    color:#fff;
+    background-color:#404040;
+    font-size:7pt;
+    font-weight:bold;
+    padding:4px 6px;
+    cursor:move;
+}
+
+.panel-content {
+    padding:4px;
+}
+
+.tool-panel {
+	border-style: solid;
+	border-width: 2px;
+	position: absolute;
+	background-color: rgb(230, 230, 230);
+	z-index: 10;
+	width: 50px;
+	height: 500px;
+	left: 10px;
+	top: 10px;
+}
+
+.map-panel {
+	position: relative;
+	height: 570px;
+}
+
+.stream-panel {
+	position: relative;
+	border-style: solid;
+	border-width: 2px;
+	height: 250px;
+}
+
+.rendering-div {
+	border-color: rgb(200, 200, 200);
+	display: block;
+	border-style: solid;
+	border-width: 1px;
+	position: absolute;
+	width: 400px;
+	height: 400px;
+}

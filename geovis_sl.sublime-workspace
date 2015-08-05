@@ -4,16 +4,72 @@
 		"selected_items":
 		[
 			[
+				"event",
+				"eventArg	local var"
+			],
+			[
+				"eve",
+				"eventArg	local var"
+			],
+			[
+				"en",
+				"isEnabled	property"
+			],
+			[
+				"pri",
+				"private	keyword"
+			],
+			[
+				"even",
+				"eventName	parameter"
+			],
+			[
+				"tool-",
+				"tool-div"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"border-c",
+				"border-color"
+			],
+			[
+				"border",
+				"border-style"
+			],
+			[
+				"border-",
+				"border-color"
+			],
+			[
+				"cons",
+				"console	var"
+			],
+			[
+				"selecti",
+				"Selection	interface"
+			],
+			[
+				"selec",
+				"Selection	interface"
+			],
+			[
+				"lod",
+				"loadMap	method"
+			],
+			[
 				"render",
 				"render_to_response"
 			],
 			[
 				"loa",
 				"lodMapId	property"
-			],
-			[
-				"di",
-				"divId	parameter"
 			],
 			[
 				"Even",
@@ -60,50 +116,10 @@
 	"buffers":
 	[
 		{
-			"file": "scripts/core/core.ts",
+			"file": "/E/GeoVis/static/main/funcpanel.css",
 			"settings":
 			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "scripts/core/eventhandler.ts",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "scripts/widgets/widgets.ts",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "geovismain/scripts/geovismain.ts",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "weathervis/scripts/weathervis.ts",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "weathervis/scripts/loadglyphmap.ts",
-			"settings":
-			{
-				"buffer_size": 0,
+				"buffer_size": 590,
 				"line_ending": "Windows"
 			}
 		},
@@ -111,23 +127,7 @@
 			"file": "weathervis/templates/weathervis/weathervis.html",
 			"settings":
 			{
-				"buffer_size": 505,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/iVisDesigner/SConstruct",
-			"settings":
-			{
-				"buffer_size": 3438,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "geovismain/templates/geovismain/index.html",
-			"settings":
-			{
-				"buffer_size": 254,
+				"buffer_size": 1576,
 				"line_ending": "Windows"
 			}
 		},
@@ -135,71 +135,44 @@
 			"file": "weathervis/static/weathervis/scripts/lodglyphmap.ts",
 			"settings":
 			{
-				"buffer_size": 556,
+				"buffer_size": 1974,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/E/iVisDesigner/scripts/toolkit.js",
+			"file": "/E/GeoVis/geovismain/static/geovismain/scripts/renderingboard.ts",
 			"settings":
 			{
-				"buffer_size": 3669,
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/E/iVisDesigner/scripts/core/vis.js",
-			"settings":
-			{
-				"buffer_size": 8996,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/iVisDesigner/scripts/core/objects/objects.js",
-			"settings":
-			{
-				"buffer_size": 3586,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/iVisDesigner/scripts/core/objects/shapes.js",
-			"settings":
-			{
-				"buffer_size": 23068,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/iVisDesigner/scripts/core/objects/style.js",
-			"settings":
-			{
-				"buffer_size": 12577,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/iVisDesigner/scripts/core/render.js",
-			"settings":
-			{
-				"buffer_size": 13910,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/DefinitelyTyped/d3/d3.d.ts",
-			"settings":
-			{
-				"buffer_size": 129840,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "",
 			"file": "weathervis/static/weathervis/scripts/weathervis.ts",
-			"file_size": -1,
-			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 895,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "geovismain/static/geovismain/scripts/geovismain.ts",
+			"settings":
+			{
+				"buffer_size": 70,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/main/layout.html",
+			"settings":
+			{
+				"buffer_size": 1193,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/GeoVis/geovismain/static/geovismain/scripts/utility.ts",
 			"settings":
 			{
 				"buffer_size": 0,
@@ -207,77 +180,10 @@
 			}
 		},
 		{
-			"file": "geovis/urls.py",
+			"file": "static/scripts/utility.ts",
 			"settings":
 			{
-				"buffer_size": 902,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/E/GeoVis/weathervis/urls.py",
-			"settings":
-			{
-				"buffer_size": 115,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "weathervis/views.py",
-			"settings":
-			{
-				"buffer_size": 290,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "geovis/settings.py",
-			"settings":
-			{
-				"buffer_size": 2819,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "weathervis/static/weathervis/scripts/loadglyphmap.js",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "weathervis/static/weathervis/scripts/loadglyphmap.js.map",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "/// <reference path=\"DefinitelyTyped/d3/d3.d.ts\" />\n\n/// <reference path=\"lodglyphmap.ts\" />\n\n\nmodule WeatherVis {\n	export class TempVis {\n		private lodMapId: string;\n		private lodMap: LODGlyphMap;\n\n		constructor(private divId: string) {\n			this.lodMapId = divId + 'LodMap';\n			// construct html dives\n			d3.select('#' + divId).append('div')\n				.attr('id', this.lodMapId)\n				.attr('width', '400px')\n				.attr('height', '400px');\n\n			// construct objects\n			this.lodMap = new LODGlyphMap(this.lodMapId);\n		}\n\n		render() {\n			\n		}\n	}\n}\n\nvar temp = new WeatherVis.TempVis('map_div');",
-			"file": "static/weathervis/scripts/weathervis.ts",
-			"file_size": 610,
-			"file_write_time": 130828777849720061,
-			"settings":
-			{
-				"buffer_size": 582,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/GeoVis/geovis_sl.sublime-workspace",
-			"settings":
-			{
-				"buffer_size": 29014,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/E/GeoVis/static/typings/library.d.ts",
-			"settings":
-			{
-				"buffer_size": 81,
+				"buffer_size": 3406,
 				"line_ending": "Windows"
 			}
 		}
@@ -314,14 +220,73 @@
 	},
 	"file_history":
 	[
+		"/E/GeoVis/weathervis/static/weathervis/scripts/renderingboard.ts",
+		"/E/geovis/library/bootstrap.css",
+		"/E/geovis/library/bootstrap.min.css",
+		"/E/geovis/library/bootstrap.min.js",
+		"/E/iVisDesigner/styles/panel.less",
+		"/E/geovis/templates/main/funcpanel.css",
+		"/E/geovis/weathervis/static/weathervis/scripts/weathervis.ts",
+		"/E/Test/test.html",
+		"/E/geovis/weathervis/static/weathervis/scripts/streamgraph.ts",
+		"/E/geovis/library/typings/jquery/jquery.d.ts",
+		"/E/geovis/library/typings/d3/d3.d.ts",
+		"/E/geovis/weathervis/views.py",
+		"/E/geovis/weathervis/static/weathervis/scripts/lodglyphmap.ts",
+		"/E/GitHub",
+		"/E/GitHub Project/topojson/examples/README.md",
+		"/E/GitHub Project/topojson/topojson.js",
+		"/E/GitHub Project/topojson/index.js",
+		"/E/GitHub Project/topojson/test/simplify-test.js",
+		"/E/GitHub Project/topojson/test/topology-test.js",
+		"/E/GeoVis/library/topojson.js",
 		"/E/iVisDesigner/html/toolkit.html",
+		"/E/iVisDesigner/styles/toolkit.less",
+		"/E/GitHub Project/topojson/test/neighbors-test.js",
+		"/E/geovis/weathervis/templates/weathervis/weathervis.html",
+		"/E/geovis/templates/main/layout.html",
+		"/E/GitHub Project/topojson/examples/Project/topojson/examples/README.md",
+		"/E/GitHub Project/topojson/test/bounds-test.js",
+		"/E/GitHub Project/topojson/test/filter-test.js",
+		"/E/GitHub Project/topojson/test/Project/topojson/test/bounds-test.js",
+		"/E/GitHub Project/topojson/test/Project/topojson/test/topology-test.js",
+		"/E/GitHub Project/d3/test/data/Project/d3/test/data/ocean.json",
+		"/E/GitHub Project/d3/test/data/Project/d3/test/data/world-countries.json",
+		"/E/GitHub Project/d3/test/data/Project/d3/test/data/us-counties.json",
+		"/E/BaiduYun/Paper Review/JCAD/用辐状节点链接图可视化分析网络安全数据.txt",
+		"/E/BaiduYun/Paper Review/JCAD/树图中的多维坐标：一种层次结构中多维属性的可视化方法.txt",
+		"/E/iVisDesigner/libraries/d3.v3.js",
+		"/E/GeoVis/.gitignore",
+		"/E/geovis/scripts/core/core.ts",
+		"/E/geovis/scripts/core/eventhandler.ts",
+		"/E/geovis/scripts/widgets/widgets.ts",
+		"/E/geovis/geovismain/scripts/geovismain.ts",
+		"/E/geovis/weathervis/scripts/weathervis.ts",
+		"/E/geovis/weathervis/scripts/loadglyphmap.ts",
+		"/E/iVisDesigner/SConstruct",
+		"/E/geovis/geovismain/templates/geovismain/index.html",
+		"/E/iVisDesigner/scripts/toolkit.js",
+		"/E/iVisDesigner/scripts/core/vis.js",
+		"/E/iVisDesigner/scripts/core/objects/objects.js",
+		"/E/iVisDesigner/scripts/core/objects/shapes.js",
+		"/E/iVisDesigner/scripts/core/objects/style.js",
+		"/E/iVisDesigner/scripts/core/render.js",
+		"/E/DefinitelyTyped/d3/d3.d.ts",
+		"/E/geovis/geovis/urls.py",
+		"/E/GeoVis/weathervis/urls.py",
+		"/E/geovis/geovis/settings.py",
+		"/E/geovis/weathervis/static/weathervis/scripts/loadglyphmap.js",
+		"/E/geovis/weathervis/static/weathervis/scripts/loadglyphmap.js.map",
+		"/E/geovis/static/weathervis/scripts/weathervis.ts",
+		"/E/GeoVis/geovis_sl.sublime-workspace",
+		"/E/GeoVis/static/typings/library.d.ts",
+		"/E/GeoVis/library/typings/library.d.ts",
+		"/E/DefinitelyTyped/dagre-d3/dagre-d3-tests.ts",
+		"/E/DefinitelyTyped/d3/d3-tests.ts",
 		"/E/iVisDesigner/scripts/utils/events.js",
 		"/C/Users/Edgar/Desktop/script.txt",
 		"/E/geovis/scripts/jquery.d.ts",
-		"/E/geovis/geovismain/scripts/geovismain.ts",
 		"/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/User/typescript.sublime-build",
-		"/E/geovis/weathervis/scripts/weathervis.ts",
-		"/E/geovis/scripts/widgets/widgets.ts",
 		"/E/geovis/scripts/core/property.ts",
 		"/E/geovis/library/three.d.ts",
 		"/E/DefinitelyTyped/threejs/three.d.ts",
@@ -342,12 +307,10 @@
 		"/E/geovis/geovismain/static/scripts/jquery.d.ts",
 		"/E/iVisDesigner/server/ivapp/serializers.py",
 		"/E/iVisDesigner/server/ivapp/models.py",
-		"/E/iVisDesigner/scripts/toolkit.js",
 		"/E/iVisDesigner/scripts/core/objects/basic.js",
 		"/E/iVisDesigner/scripts/core/objects/component.js",
 		"/E/iVisDesigner/scripts/core/objects/geometry.js",
 		"/E/geovis/library/numeric-1.2.6.js",
-		"/E/iVisDesigner/scripts/core/objects/shapes.js",
 		"/E/Test/geovis/geovis/settings.py",
 		"/E/Test/geovis/geovis/urls.py",
 		"/E/Test/geovis/geovis/wsgi.py",
@@ -360,7 +323,6 @@
 		"/E/iVisDesigner/scripts/api/common.js",
 		"/E/iVisDesigner/scripts/core/path.js",
 		"/E/iVisDesigner/scripts/interface/modal.js",
-		"/E/iVisDesigner/scripts/core/vis.js",
 		"/E/iVisDesigner/scripts/utils/autoalign.js",
 		"/E/iVisDesigner/scripts/utils/expression.js",
 		"/E/iVisDesigner/scripts/core/workspace.js",
@@ -371,7 +333,6 @@
 		"/E/iVisDesigner/scripts/client/nested.js",
 		"/E/iVisDesigner/scripts/client/ajax.js",
 		"/E/iVisDesigner/scripts/client/utils.js",
-		"/E/iVisDesigner/SConstruct",
 		"/E/iVisDesigner/scripts/interface/interface.js",
 		"/E/iVisDesigner/scripts/utils/utils.js",
 		"/E/iVisDesigner/scripts/utils/uuid.js",
@@ -386,61 +347,7 @@
 		"/E/iVisDesigner/scripts/utils/oop.js",
 		"/E/iVisDesigner/scripts/utils/packing.js",
 		"/E/iVisDesigner/scripts/utils/parser.pegjs",
-		"/E/iVisDesigner/scripts/utils/sha1.js",
-		"/E/iVisDesigner/scripts/utils/colors.js",
-		"/E/iVisDesigner/scripts/node/wrappers.js",
-		"/E/iVisDesigner/scripts/core/core.js",
-		"/E/iVisDesigner/scripts/core/data.js",
-		"/E/iVisDesigner/scripts/core/render.js",
-		"/E/iVisDesigner/scripts/core/actionmanager.js",
-		"/E/iVisDesigner/scripts/api/dataprovider.js",
-		"/E/iVisDesigner/scripts/core/objects/objects.js",
-		"/E/iVisDesigner/scripts/interface/menu.js",
-		"/E/iVisDesigner/scripts/interface/controls.js",
-		"/E/iVisDesigner/scripts/interface/panel.js",
-		"/E/iVisDesigner/scripts/interface/panels/panels.js",
-		"/E/iVisDesigner/scripts/node/transport.js",
-		"/E/iVisDesigner/scripts/interface/popup.js",
-		"/E/iVisDesigner/scripts/interface/utils.js",
-		"/E/iVisDesigner/scripts/core/objects/layout.js",
-		"/E/iVisDesigner/scripts/core/objects/map.js",
-		"/E/iVisDesigner/scripts/core/serializer.js",
-		"/E/Test/DjangoWebProject1/DjangoWebProject1/DjangoWebProject1.pyproj",
-		"/E/Test/DjangoWebProject1/DjangoWebProject1/manage.py",
-		"/E/Test/DjangoWebProject1/DjangoWebProject1/app/mewtp.ts",
-		"/E/Test/DjangoWebProject1/DjangoWebProject1/app/mewtp.js",
-		"/E/iVisDesigner/scripts/client/user.js",
-		"/E/iVisDesigner/server/websocket/wamp.py",
-		"/E/iVisDesigner/scripts/interface/u",
-		"/E/iVisDesigner/scripts/strings/strings.yaml",
-		"/E/iVisDesigner/config.js.template",
-		"/E/iVisDesigner/archive.py",
-		"/E/iVisDesigner/server/README.md",
-		"/E/iVisDesigner/server/controller",
-		"/E/iVisDesigner/README.md",
-		"/E/iVisDesigner/CREDITS.md",
-		"/E/iVisDesigner/server/server.tac",
-		"/E/iVisDesigner/html/embed_test.html",
-		"/E/iVisDesigner/version.py",
-		"/E/iVisDesigner/TODO.md",
-		"/C/Users/Edgar/AppData/Roaming/SumatraPDF/SumatraPDF-settings.txt",
-		"/C/Users/Edgar/Downloads/robots.txt",
-		"/C/Users/Edgar/Downloads/新建文本文档.txt",
-		"/E/draft_vis15_hongsen/vgtc.cls",
-		"/C/Users/Edgar/Desktop/robots.txt",
-		"/C/Users/Edgar/Desktop/hosts",
-		"/Y/Others/un_papers.txt",
-		"/E/weathervissite/.myumldata",
-		"/E/BaiduYun/Paper Review/ChinaVis15/file192-1.txt",
-		"/E/BaiduYun/Paper Review/ChinaVis15/review_paper192.txt",
-		"/E/review_paper192.txt",
-		"/E/geovis/geovismain/template/geovismain/index.html",
-		"/C/Users/Edgar/Desktop/BingSiteAuth.xml",
-		"/C/Windows/System32/drivers/etc/hosts",
-		"/E/BaiduYun/Paper Review/TVCG/TVCG-2015-04-0099/Reivew-TVCG-2015-04-0099.txt",
-		"/E/BaiduYun/Paper Review/JCAD/用辐状节点链接图可视化分析网络安全数据.txt",
-		"/E/BaiduYun/Paper Review/JCAD/review.txt",
-		"/C/Users/Edgar/Downloads/360wljk/使用说明.txt"
+		"/E/iVisDesigner/scripts/utils/sha1.js"
 	],
 	"find":
 	{
@@ -458,6 +365,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"min-width",
+			"@media",
+			"min-width",
+			"contatiner",
 			"version",
 			"cb",
 			"render",
@@ -506,52 +417,78 @@
 	"groups":
 	[
 		{
-			"selected": 26,
+			"selected": 8,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "scripts/core/core.ts",
+					"file": "/E/GeoVis/static/main/funcpanel.css",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 590,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								366,
+								366
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"use_tab_stops": false
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 45.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "scripts/core/eventhandler.ts",
+					"file": "weathervis/templates/weathervis/weathervis.html",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 1576,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1013,
+								1013
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "weathervis/static/weathervis/scripts/lodglyphmap.ts",
+					"settings":
+					{
+						"buffer_size": 1974,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								360,
+								360
 							]
 						],
 						"settings":
@@ -565,37 +502,8 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "scripts/widgets/widgets.ts",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 3,
-					"file": "geovismain/scripts/geovismain.ts",
+					"file": "/E/GeoVis/geovismain/static/geovismain/scripts/renderingboard.ts",
 					"settings":
 					{
 						"buffer_size": 0,
@@ -622,23 +530,25 @@
 				},
 				{
 					"buffer": 4,
-					"file": "weathervis/scripts/weathervis.ts",
+					"file": "weathervis/static/weathervis/scripts/weathervis.ts",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 895,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								895,
+								895
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage"
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"use_tab_stops": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -648,18 +558,18 @@
 				},
 				{
 					"buffer": 5,
-					"file": "weathervis/scripts/loadglyphmap.ts",
+					"file": "geovismain/static/geovismain/scripts/geovismain.ts",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 70,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								52,
+								62
 							]
 						],
 						"settings":
@@ -675,90 +585,38 @@
 				},
 				{
 					"buffer": 6,
-					"file": "weathervis/templates/weathervis/weathervis.html",
+					"file": "templates/main/layout.html",
 					"settings":
 					{
-						"buffer_size": 505,
+						"buffer_size": 1193,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1177,
+								1177
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 195.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "/E/iVisDesigner/SConstruct",
+					"file": "/E/GeoVis/geovismain/static/geovismain/scripts/utility.ts",
 					"settings":
 					{
-						"buffer_size": 3438,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1394,
-								1394
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 360.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "geovismain/templates/geovismain/index.html",
-					"settings":
-					{
-						"buffer_size": 254,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								254,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "weathervis/static/weathervis/scripts/lodglyphmap.ts",
-					"settings":
-					{
-						"buffer_size": 556,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -767,202 +625,6 @@
 							[
 								0,
 								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"translate_tabs_to_spaces": false,
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "/E/iVisDesigner/scripts/toolkit.js",
-					"settings":
-					{
-						"buffer_size": 3669,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 405.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "/E/iVisDesigner/scripts/core/vis.js",
-					"settings":
-					{
-						"buffer_size": 8996,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5639,
-								5645
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1878.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "/E/iVisDesigner/scripts/core/objects/objects.js",
-					"settings":
-					{
-						"buffer_size": 3586,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2290,
-								2297
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 450.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "/E/iVisDesigner/scripts/core/objects/shapes.js",
-					"settings":
-					{
-						"buffer_size": 23068,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2255,
-								2263
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 438.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "/E/iVisDesigner/scripts/core/objects/style.js",
-					"settings":
-					{
-						"buffer_size": 12577,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11654,
-								11654
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4230.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "/E/iVisDesigner/scripts/core/render.js",
-					"settings":
-					{
-						"buffer_size": 13910,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4044,
-								4045
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1350.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "/E/DefinitelyTyped/d3/d3.d.ts",
-					"settings":
-					{
-						"buffer_size": 129840,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10271,
-								10271
 							]
 						],
 						"settings":
@@ -973,279 +635,36 @@
 							"use_tab_stops": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2970.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 17,
-					"file": "weathervis/static/weathervis/scripts/weathervis.ts",
+					"buffer": 8,
+					"file": "static/scripts/utility.ts",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 3406,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								766,
+								766
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
 							"use_tab_stops": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"file": "geovis/urls.py",
-					"settings":
-					{
-						"buffer_size": 902,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								844,
-								844
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 19,
-					"file": "/E/GeoVis/weathervis/urls.py",
-					"settings":
-					{
-						"buffer_size": 115,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								115,
-								115
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 20,
-					"file": "weathervis/views.py",
-					"settings":
-					{
-						"buffer_size": 290,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								278,
-								278
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 21,
-					"file": "geovis/settings.py",
-					"settings":
-					{
-						"buffer_size": 2819,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 22,
-					"file": "weathervis/static/weathervis/scripts/loadglyphmap.js",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 23,
-					"file": "weathervis/static/weathervis/scripts/loadglyphmap.js.map",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 24,
-					"file": "static/weathervis/scripts/weathervis.ts",
-					"settings":
-					{
-						"buffer_size": 582,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								92,
-								92
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"translate_tabs_to_spaces": false,
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 25,
-					"file": "/E/GeoVis/geovis_sl.sublime-workspace",
-					"settings":
-					{
-						"buffer_size": 29014,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 26,
-					"file": "/E/GeoVis/static/typings/library.d.ts",
-					"settings":
-					{
-						"buffer_size": 81,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								75,
-								75
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 45.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -1,29 +1,36 @@
 /// <reference path="weathervislib.d.ts" />
-
 /// <reference path="lodglyphmap.ts" />
+/// <reference path="../../../../static/scripts/utility.ts" />
+/// <reference path="../../../../static/scripts/functionpanel.ts" />
+
 
 
 module WeatherVis {
 	export class TempVis {
 		private lodMapId: string;
 		private lodMap: LODGlyphMap;
+        private functionPanel: GeoVis.FunctionPanel;
 
 		constructor(private divId: string) {
 			this.lodMapId = divId + 'LodMap';
+            var divDom = document.getElementById(divId);
+            
 			// construct html dives
-			d3.select('#' + divId).append('div')
-				.attr('id', this.lodMapId)
-				.attr('width', '400px')
-				.attr('height', '400px');
-
+            var lodMapDivDom = document.createElement('div');
+			var divHtml = "<div class='rendering-div'"
+                        + "id='" + this.lodMapId + "'>Tool</div>";
+            lodMapDivDom.innerHTML = divHtml;
+            divDom.appendChild(lodMapDivDom);
+            
 			// construct objects
-			this.lodMap = new LODGlyphMap(this.lodMapId);
+			this.lodMap = new LODGlyphMap(this.lodMapId, 0, 0, 400, 400);
+            this.functionPanel = new GeoVis.FunctionPanel('tool-div');
 		}
 
 		render() {
-			
+		    
 		}
 	}
 }
 
-var temp = new WeatherVis.TempVis('map_div');
+var temp = new WeatherVis.TempVis('map-div');

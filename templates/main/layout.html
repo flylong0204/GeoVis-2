@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Data Visualization</title>
+    <link rel="stylesheet" type="text/css" href='/static/bootstrap.css' />
+    <link rel="stylesheet" type="text/css" href='/static/main/funcpanel.css' />
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">Application name</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href='/weathervis/home'>Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container" style='position:relative; top:50px;'>
+		{% block content %}{% endblock %}
+        <hr/>
+        <footer>
+            <p>&copy; Hongsen</p>
+        </footer>
+    </div>
+    
+    <script type="text/javascript" src="/static/jquery-2.0.3.js"></script>
+	<script type="text/javascript" src='/static/bootstrap.min.js'></script>
+	{% block scripts %}{% endblock %}
+</body>
+</html>
