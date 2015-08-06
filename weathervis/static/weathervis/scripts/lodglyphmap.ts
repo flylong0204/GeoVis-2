@@ -18,6 +18,8 @@ module WeatherVis {
             GeoVis.Utility.eventMapper.registerEvent(this.widgetId, this);
             
             this.loadMap();
+            
+            this.loadMask();
 		}
 
 		// render the map
@@ -34,10 +36,21 @@ module WeatherVis {
                 svg.selectAll("path").data(topo.features).enter().append("path").attr("d", path);
             });
 		}
-
-		// render the glyph
-		updateGlyph(value: UnGlyph[]) {
-			
-		}
+        
+        loadMask() {
+            d3.json('http://127.0.0.1:8000/geovismain/datavalue?', (error: any, data: any) => {                
+                var canvas = document.createElement('canvas');
+                canvas.setAttribute('width', '200');
+                canvas.setAttribute('height', '200');
+                canvas.setAttribute('id', 'testcanvas');
+                var pdom = document.getElementById(this.widgetId);
+                pdom.appendChild(canvas);
+                var c: any = document.getElementById('testcanvas');
+                var ctx: any = c.getContext('2d');
+                
+                ctx.fillStyle = '#FF0000';
+                ctx.fillRect(0, 0, 150, 70);
+            }); 
+        }
 	}
 }

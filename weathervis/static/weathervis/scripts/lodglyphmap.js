@@ -21,6 +21,7 @@ var WeatherVis;
             this.divDom = document.getElementById(widgetId);
             GeoVis.Utility.eventMapper.registerEvent(this.widgetId, this);
             this.loadMap();
+            this.loadMask();
         }
         // render the map
         LODGlyphMap.prototype.loadMap = function () {
@@ -35,8 +36,20 @@ var WeatherVis;
                 svg.selectAll("path").data(topo.features).enter().append("path").attr("d", path);
             });
         };
-        // render the glyph
-        LODGlyphMap.prototype.updateGlyph = function (value) {
+        LODGlyphMap.prototype.loadMask = function () {
+            var _this = this;
+            d3.json('http://127.0.0.1:8000/geovismain/datavalue?', function (error, data) {
+                var canvas = document.createElement('canvas');
+                canvas.setAttribute('width', '200');
+                canvas.setAttribute('height', '200');
+                canvas.setAttribute('id', 'testcanvas');
+                var pdom = document.getElementById(_this.widgetId);
+                pdom.appendChild(canvas);
+                var c = document.getElementById('testcanvas');
+                var ctx = c.getContext('2d');
+                ctx.fillStyle = '#FF0000';
+                ctx.fillRect(0, 0, 150, 70);
+            });
         };
         return LODGlyphMap;
     })(GeoVis.RenderingBoard);

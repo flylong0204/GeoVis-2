@@ -5,7 +5,7 @@ from geovismain.models import User, Group, Dataset
 class DatasetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dataset
-        fields = ('id', 'name')
+        fields = ('id', 'name', 'path', 'infopath')
     
     def create(self, validated_data):
         return Dataset.objects.create(**validated_data)

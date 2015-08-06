@@ -12,7 +12,7 @@ var WeatherVis;
             // construct html dives
             var lodMapDivDom = document.createElement('div');
             var divHtml = "<div class='rendering-div'"
-                + "id='" + this.lodMapId + "'>Tool</div>";
+                + "id='" + this.lodMapId + "'></div>";
             lodMapDivDom.innerHTML = divHtml;
             divDom.appendChild(lodMapDivDom);
             // construct objects

@@ -25,6 +25,9 @@ var GeoVis;
             else if (eventName == 'mosueup') {
                 obj.onMouseUp(e);
             }
+            else if (eventName == 'mousewheel') {
+                obj.onWheel(e);
+            }
         };
         return EventMapper;
     })();

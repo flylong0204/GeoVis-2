@@ -28,6 +28,8 @@ module GeoVis {
                obj.onMouseDrag(e); 
             } else if (eventName == 'mosueup') {
                obj.onMouseUp(e); 
+            } else if (eventName == 'mousewheel') {
+               obj.onWheel(e); 
             }
         }
     }
