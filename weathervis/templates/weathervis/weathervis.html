@@ -1,8 +1,7 @@
 {% extends "main/layout.html" %}
 
 {% block content %}
-<div id='tool-div' class='panel-border tool-panel'>
-</div>
+<div id='tool-div' class='panel-border tool-panel'></div>
 <div id='map-div' class='map-panel'></div>
 <div id='stream-div' class='panel-border stream-panel'></div>
 
@@ -21,46 +20,39 @@
 	var Dragging = function(){
 		var selectedObj = null;
 		
-        function mouseDownHandler(e) {
+        function mouseEventHandler(e) {
         	selectedObj = retrieveParentDiv(e.target);
-        	if (selectedObj == null) return;
-        	GeoVis.Utility.eventMapper.raiseEvent(selectedObj.id, 'mousedown', e);
-        };
-        
-        function mouseMoveHandler(e) {
-        	if (selectedObj == null) return;
-        	GeoVis.Utility.eventMapper.raiseEvent(selectedObj.id, 'mousemove', e);
-        };
-        
-        function mouseUpHandler(e) {
-        	if (selectedObj == null) return;
-        	GeoVis.Utility.eventMapper.raiseEvent(selectedObj.id, 'mouseup', e);
-        	selectedObj = null;
+        	while (selectedObj !== null){
+        		GeoVis.Utility.eventMapper.raiseEvent(selectedObj.id, e);
+        		selectedObj = retrieveParentDiv(selectedObj.parentNode);
+        	}
+        	
         };
         
         function mouseWheelHandler(e) {
         	var currentObj = retrieveParentDiv(e.target);
-        	if (currentObj == null) return;
-        	GeoVis.Utility.eventMapper.raiseEvent(currentObj.id, 'mousewheel', e);
+        	while (currentObj !== null){
+        		GeoVis.Utility.eventMapper.raiseEvent(currentObj.id, e);
+        		currentObj = retrieveParentDiv(currentObj.parentNode);
+        	}
         }
         
         return {
             enable:function(){
-                document.addEventListener('mousedown', mouseDownHandler);
-                document.addEventListener('mousemove', mouseMoveHandler);
-                document.addEventListener('mouseup', mouseUpHandler);
+                document.addEventListener('mousedown', mouseEventHandler);
+                document.addEventListener('mousemove', mouseEventHandler);
+                document.addEventListener('mouseup', mouseEventHandler);
                 document.addEventListener('mousewheel', mouseWheelHandler);
             },
             disable:function(){
-                document.removeEventListener('mousedown', mouseDownHandler);
-                document.removeEventListener('mousemove', mouseMoveHandler);
-                document.removeEventListener('mouseup', mouseUpHandler);
+                document.removeEventListener('mousedown', mouseEventHandler);
+                document.removeEventListener('mousemove', mouseEventHandler);
+                document.removeEventListener('mouseup', mouseEventHandler);
                 document.removeEventListener('mousewheel', mouseWheelHandler);
             }
         }
         
         function retrieveParentDiv(obj){
-        	
         	while (obj !== null && obj.tagName !== 'DIV')
         		obj = obj.parentNode;
         	return obj;

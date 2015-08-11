@@ -16,19 +16,19 @@ module GeoVis {
             this.eventHanlders[objId] = null;
         }
 
-        raiseEvent(objId: string, eventName: string, e: MouseEvent) {
+        raiseEvent(objId: string, e: MouseEvent) {
             var obj = this.eventHanlders[objId];
-            if (obj != null) this.execEvent(obj, eventName, e);
+            if (obj != null) this.execEvent(obj, e);
         }
         
-        execEvent(obj: any, eventName: string, e: MouseEvent) {
-            if (eventName == 'mousedown') {
+        execEvent(obj: any, e: MouseEvent) {
+            if (e.type == 'mousedown') {
                obj.onMouseDown(e); 
-            } else if (eventName == 'mousemove') {
-               obj.onMouseDrag(e); 
-            } else if (eventName == 'mosueup') {
+            } else if (e.type == 'mousemove') {
+               obj.onMouseMove(e); 
+            } else if (e.type == 'mouseup') {
                obj.onMouseUp(e); 
-            } else if (eventName == 'mousewheel') {
+            } else if (e.type == 'mousewheel') {
                obj.onWheel(e); 
             }
         }

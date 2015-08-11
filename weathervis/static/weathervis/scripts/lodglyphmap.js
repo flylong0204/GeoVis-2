@@ -17,39 +17,116 @@ var WeatherVis;
     var LODGlyphMap = (function (_super) {
         __extends(LODGlyphMap, _super);
         function LODGlyphMap(widgetId, px, py, w, h) {
+            var _this = this;
             _super.call(this, widgetId, px, py, w, h);
-            this.divDom = document.getElementById(widgetId);
-            GeoVis.Utility.eventMapper.registerEvent(this.widgetId, this);
+            $(this.contentElement).mouseenter(function () {
+                _this.isHoveringContent = true;
+            });
+            $(this.contentElement).mouseleave(function () {
+                _this.isHoveringContent = false;
+            });
+            // construct svg
+            this.svg = d3.select('#' + this.contentDivId)
+                .append("svg")
+                .attr('id', this.widgetId + '-svg')
+                .attr("width", this.w)
+                .attr("height", this.h - 27);
             this.loadMap();
-            this.loadMask();
+            this.loadGlyph();
         }
         // render the map
         LODGlyphMap.prototype.loadMap = function () {
-            var svg = d3.select('#' + this.widgetId)
-                .append("svg")
-                .attr("width", this.w)
-                .attr("height", this.h);
-            d3.json('/static/us-10m.json', function (data) {
+            var _this = this;
+            d3.json('/static/us.json', function (error, data) {
                 var topo = topojson.feature(data, data.objects.states);
-                var prj = d3.geo.mercator();
-                var path = d3.geo.path().projection(prj);
-                svg.selectAll("path").data(topo.features).enter().append("path").attr("d", path);
+                _this.jsonData = topo;
+                var center = d3.geo.centroid(topo);
+                _this.scale = 150;
+                _this.projection = d3.geo.mercator().scale(_this.scale).center(center)
+                    .translate([_this.w / 2, _this.h / 2]);
+                var path = d3.geo.path().projection(_this.projection);
+                var bounds = path.bounds(topo);
+                var hscale = _this.scale * _this.w / (bounds[1][0] - bounds[0][0]);
+                var vscale = _this.scale * _this.h / (bounds[1][1] - bounds[0][1]);
+                _this.scale = (hscale < vscale) ? hscale : vscale;
+                var newCenter = _this.projection.invert([(bounds[1][0] + bounds[0][0]) / 2, (bounds[1][1] + bounds[0][1]) / 2]);
+                ;
+                // new projection
+                _this.projection = d3.geo.mercator().center(newCenter)
+                    .scale(_this.scale).translate([_this.w / 2, _this.h / 2]);
+                path = path.projection(_this.projection);
+                _this.svg.selectAll("path")
+                    .data(topo.features)
+                    .enter()
+                    .append("path")
+                    .attr("d", path);
             });
         };
-        LODGlyphMap.prototype.loadMask = function () {
+        LODGlyphMap.prototype.loadGlyph = function () {
             var _this = this;
-            d3.json('http://127.0.0.1:8000/geovismain/datavalue?', function (error, data) {
-                var canvas = document.createElement('canvas');
-                canvas.setAttribute('width', '200');
-                canvas.setAttribute('height', '200');
-                canvas.setAttribute('id', 'testcanvas');
-                var pdom = document.getElementById(_this.widgetId);
-                pdom.appendChild(canvas);
-                var c = document.getElementById('testcanvas');
-                var ctx = c.getContext('2d');
-                ctx.fillStyle = '#FF0000';
-                ctx.fillRect(0, 0, 150, 70);
+            d3.json('/weathervis/glyphvalues', function (error, data) {
+                var rawData = JSON.parse(data);
+                _this.glyphData = rawData;
+                for (var i in rawData) {
+                    var item = rawData[i];
+                    _this.svg.append('circle')
+                        .attr('cx', _this.projection([item['lon'], item['lat']])[0])
+                        .attr('cy', _this.projection([item['lon'], item['lat']])[1])
+                        .attr('r', 2)
+                        .attr('stroke', 'green')
+                        .attr('fill', 'green');
+                }
             });
+        };
+        LODGlyphMap.prototype.onMouseDown = function (e) {
+            if (this.isHoveringContent) {
+                this.isDragging = true;
+                var mouseCenter = [e.clientX - this.divDom.offsetLeft, e.clientY - this.divDom.offsetTop];
+                this.tempDegreeCenter = this.projection.invert(mouseCenter);
+            }
+            _super.prototype.onMouseDown.call(this, e);
+        };
+        LODGlyphMap.prototype.onMouseMove = function (e) {
+            if (e.button == 0 && this.isHoveringContent && this.isDragging) {
+                var mouseCenter = [e.clientX - this.divDom.offsetLeft, e.clientY - this.divDom.offsetTop];
+                this.projection = d3.geo.mercator().scale(this.scale).center(this.tempDegreeCenter)
+                    .translate(mouseCenter);
+                this.tempDegreeCenter = this.projection.invert(mouseCenter);
+                this.render();
+            }
+            _super.prototype.onMouseMove.call(this, e);
+        };
+        LODGlyphMap.prototype.onMouseUp = function (e) {
+            _super.prototype.onMouseUp.call(this, e);
+        };
+        LODGlyphMap.prototype.onWheel = function (e) {
+            var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+            var mouseCenter = [this.w / 2, this.h / 2];
+            var degreeCenter = this.projection.invert(mouseCenter);
+            this.scale = this.scale * (1 + delta * 0.05);
+            this.projection = d3.geo.mercator().scale(this.scale).center(degreeCenter)
+                .translate(mouseCenter);
+            this.render();
+        };
+        LODGlyphMap.prototype.render = function () {
+            var path = d3.geo.path().projection(this.projection);
+            path = path.projection(this.projection);
+            this.svg.selectAll("path").remove();
+            this.svg.selectAll("path")
+                .data(this.jsonData.features)
+                .enter()
+                .append("path")
+                .attr("d", path);
+            this.svg.selectAll('circle').remove();
+            for (var i in this.glyphData) {
+                var item = this.glyphData[i];
+                this.svg.append('circle')
+                    .attr('cx', this.projection([item['lon'], item['lat']])[0])
+                    .attr('cy', this.projection([item['lon'], item['lat']])[1])
+                    .attr('r', 2)
+                    .attr('stroke', 'green')
+                    .attr('fill', 'green');
+            }
         };
         return LODGlyphMap;
     })(GeoVis.RenderingBoard);

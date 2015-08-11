@@ -10,22 +10,22 @@ var GeoVis;
         EventMapper.prototype.removeEvent = function (objId) {
             this.eventHanlders[objId] = null;
         };
-        EventMapper.prototype.raiseEvent = function (objId, eventName, e) {
+        EventMapper.prototype.raiseEvent = function (objId, e) {
             var obj = this.eventHanlders[objId];
             if (obj != null)
-                this.execEvent(obj, eventName, e);
+                this.execEvent(obj, e);
         };
-        EventMapper.prototype.execEvent = function (obj, eventName, e) {
-            if (eventName == 'mousedown') {
+        EventMapper.prototype.execEvent = function (obj, e) {
+            if (e.type == 'mousedown') {
                 obj.onMouseDown(e);
             }
-            else if (eventName == 'mousemove') {
-                obj.onMouseDrag(e);
+            else if (e.type == 'mousemove') {
+                obj.onMouseMove(e);
             }
-            else if (eventName == 'mosueup') {
+            else if (e.type == 'mouseup') {
                 obj.onMouseUp(e);
             }
-            else if (eventName == 'mousewheel') {
+            else if (e.type == 'mousewheel') {
                 obj.onWheel(e);
             }
         };

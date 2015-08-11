@@ -8,12 +8,14 @@
     background-color:#404040;
     font-size:7pt;
     font-weight:bold;
-    padding:4px 6px;
+    padding:4px 4px;
     cursor:move;
+    height: 20px;
 }
 
 .panel-content {
-    padding:4px;
+    padding:0px;
+    background-color:#FFFFFF;
 }
 
 .tool-panel {
@@ -30,7 +32,7 @@
 
 .map-panel {
 	position: relative;
-	height: 570px;
+	height: 500px;
 }
 
 .stream-panel {
@@ -46,6 +48,4 @@
 	border-style: solid;
 	border-width: 1px;
 	position: absolute;
-	width: 400px;
-	height: 400px;
 }

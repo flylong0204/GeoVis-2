@@ -23,7 +23,7 @@ module WeatherVis {
             divDom.appendChild(lodMapDivDom);
             
 			// construct objects
-			this.lodMap = new LODGlyphMap(this.lodMapId, 0, 0, 400, 400);
+			this.lodMap = new LODGlyphMap(this.lodMapId, 0, 0, 700, 500);
             this.functionPanel = new GeoVis.FunctionPanel('tool-div');
 		}
 

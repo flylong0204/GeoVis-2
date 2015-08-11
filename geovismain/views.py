@@ -19,7 +19,6 @@ def user_list(request):
 def data_value(request):
     if request.method == 'GET':
         # read the metadata
-
         rootgrp = Dataset('E:/Data/00_24/info.nc', format='NETCDF4')
         xfLen = len(rootgrp.dimensions['xf'])
         yfLen = len(rootgrp.dimensions['yf'])

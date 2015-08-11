@@ -1,6 +1,7 @@
 from netCDF4 import Dataset
 from lib2to3.fixer_util import String
 import os
+import numpy
 
 rootgrp = Dataset('E:/Data/refcstv2_precip_ccpav2_000_to_024.nc', format='NETCDF4')
 
@@ -47,11 +48,12 @@ if not os.path.exists(pFolderName):
     os.makedirs(pFolderName)
 index = 0
 for t in initTimes:
-    tempFileName = pFolderName + str(t) + '.apcp'
+    tempData = numpy.array(apcpFcst[index])
+    tempFileName = pFolderName + str(t) + '.apcpt'
     f = open(tempFileName, 'wb')
-    tempData = apcpFcst[index][:][:][:]
+    tempData.tofile(f)
     index += 1
-    f.write(tempData)
+    #f.write(tempData)
     f.close()
 
 # save precipitation analysis
