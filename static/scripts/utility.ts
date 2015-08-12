@@ -1,6 +1,4 @@
 module GeoVis {
-    
-    
     export class EventMapper {
         private eventHanlders = new Array< any >();
 
@@ -19,6 +17,11 @@ module GeoVis {
         raiseEvent(objId: string, e: MouseEvent) {
             var obj = this.eventHanlders[objId];
             if (obj != null) this.execEvent(obj, e);
+        }
+        
+        raiseEventAll(e: MouseEvent) {
+            for (var obj in this.eventHanlders)
+                this.execEvent(this.eventHanlders[obj], e);
         }
         
         execEvent(obj: any, e: MouseEvent) {

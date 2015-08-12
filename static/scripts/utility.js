@@ -15,6 +15,10 @@ var GeoVis;
             if (obj != null)
                 this.execEvent(obj, e);
         };
+        EventMapper.prototype.raiseEventAll = function (e) {
+            for (var obj in this.eventHanlders)
+                this.execEvent(this.eventHanlders[obj], e);
+        };
         EventMapper.prototype.execEvent = function (obj, e) {
             if (e.type == 'mousedown') {
                 obj.onMouseDown(e);

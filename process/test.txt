@@ -1,0 +1,21 @@
+seedIndex = 0
+for i in range(0, 4):
+    for j in range(0, 4):
+        beginX = j - 1
+        if (beginX < 0): beginX = 0
+        endX = j + 1
+        if (endX >= width): endX = width - 1
+        beginY = i - 1
+        if (beginY < 0): beginY = 0
+        endY = i + 1
+        if (endY >= height): endY = height - 1
+        isMinima = True
+        for ii in range(beginY, endY + 1):
+            for jj in range(beginX, endX + 1):
+                if (ii == i and jj == j): continue
+                if img[ii, jj] < img[i, j]: 
+                    isMinima = False
+                    break
+        if (isMinima == True):
+            seedIndex += 1
+            seedMap[i, j] = 1

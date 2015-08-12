@@ -124,66 +124,10 @@
 			}
 		},
 		{
-			"file": "/E/GeoVis/library/typings/jquery/jquery.d.ts",
+			"file": "weathervis/overlayprocessing.py",
 			"settings":
 			{
-				"buffer_size": 149259,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/G/WrfVisualizationPlatform/trunk/WrfAnalysisPlatform/WrfVisualizationPlatform/wrf_data_manager.cpp",
-			"settings":
-			{
-				"buffer_size": 24211,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/Data/data_importer.py",
-			"settings":
-			{
-				"buffer_size": 2603,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/iVisDesigner/server/ivapp/serializers.py",
-			"settings":
-			{
-				"buffer_size": 1465,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/iVisDesigner/server/ivapp/views.py",
-			"settings":
-			{
-				"buffer_size": 4576,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/GitHub Project/DefinitelyTyped/d3/d3-tests.ts",
-			"settings":
-			{
-				"buffer_size": 90135,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/GeoVis/weathervis/views.py",
-			"settings":
-			{
-				"buffer_size": 2303,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/E/iVisDesigner/server/ivapp/models.py",
-			"settings":
-			{
-				"buffer_size": 1491,
+				"buffer_size": 5553,
 				"line_ending": "Windows"
 			}
 		}
@@ -220,9 +164,25 @@
 	},
 	"file_history":
 	[
+		"/E/Software/manictime/ManicTime.Professional.2.4.0破解版/破解方法.txt",
+		"/E/Software/manictime/安装前必看.txt",
+		"/E/GeoVis/library/typings/jquery/jquery.d.ts",
+		"/E/GeoVis/process/test.txt",
+		"/C/Users/Edgar/Downloads/plot_ncut.py",
+		"/C/Python27/Lib/site-packages/numpy-1.9.2.dist-info/top_level.txt",
+		"/C/Python27/Lib/site-packages/numpy-1.9.2.dist-info/RECORD",
+		"/C/Python27/Lib/site-packages/numpy-1.9.2.dist-info/DESCRIPTION.rst",
+		"/E/GeoVis/weathervis/overlayprocessing.py",
+		"/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/G/WrfVisualizationPlatform/trunk/WrfAnalysisPlatform/WrfVisualizationPlatform/wrf_data_manager.cpp",
+		"/E/Data/data_importer.py",
+		"/E/iVisDesigner/server/ivapp/serializers.py",
+		"/E/iVisDesigner/server/ivapp/views.py",
+		"/E/GitHub Project/DefinitelyTyped/d3/d3-tests.ts",
+		"/E/GeoVis/weathervis/views.py",
+		"/E/iVisDesigner/server/ivapp/models.py",
 		"/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/User/Python.sublime-settings",
 		"/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/Edgar/Desktop/script.txt",
 		"/E/Data/00_24/info.nc",
 		"/E/Data/00_24/apcp/2002010200.apcp",
@@ -316,8 +276,6 @@
 		"/E/Web Learning/force.html",
 		"/E/Web Learning/test.html",
 		"/E/geovis/geovismain/static/scripts/jquery.d.ts",
-		"/E/iVisDesigner/server/ivapp/serializers.py",
-		"/E/iVisDesigner/server/ivapp/models.py",
 		"/E/iVisDesigner/scripts/core/objects/basic.js",
 		"/E/iVisDesigner/scripts/core/objects/component.js",
 		"/E/iVisDesigner/scripts/core/objects/geometry.js",
@@ -327,27 +285,13 @@
 		"/E/Test/geovis/geovis/wsgi.py",
 		"/E/Test/geovis/geovismain/urls.py",
 		"/E/Test/geovis/geovismain/__init__.py",
-		"/E/iVisDesigner/server/ivapp/views.py",
 		"/E/iVisDesigner/server/server/urls.py",
 		"/E/iVisDesigner/scripts/client/twisted.js",
 		"/E/iVisDesigner/scripts/client/saveload.js",
 		"/E/iVisDesigner/scripts/api/common.js",
 		"/E/iVisDesigner/scripts/core/path.js",
 		"/E/iVisDesigner/scripts/interface/modal.js",
-		"/E/iVisDesigner/scripts/utils/autoalign.js",
-		"/E/iVisDesigner/scripts/utils/expression.js",
-		"/E/iVisDesigner/scripts/core/workspace.js",
-		"/E/iVisDesigner/scripts/editor/objectlist.js",
-		"/E/iVisDesigner/scripts/editor/workspace.js",
-		"/E/iVisDesigner/scripts/editor/editor.js",
-		"/E/iVisDesigner/scripts/client/client.js",
-		"/E/iVisDesigner/scripts/client/nested.js",
-		"/E/iVisDesigner/scripts/client/ajax.js",
-		"/E/iVisDesigner/scripts/client/utils.js",
-		"/E/iVisDesigner/scripts/interface/interface.js",
-		"/E/iVisDesigner/scripts/utils/utils.js",
-		"/E/iVisDesigner/scripts/utils/uuid.js",
-		"/E/iVisDesigner/scripts/utils/template.js"
+		"/E/iVisDesigner/scripts/utils/autoalign.js"
 	],
 	"find":
 	{
@@ -365,6 +309,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"//",
 			"mouseover",
 			"onmouse",
 			"json",
@@ -435,8 +380,8 @@
 						"selection":
 						[
 							[
-								526,
-								526
+								794,
+								794
 							]
 						],
 						"settings":
@@ -453,75 +398,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "/E/GeoVis/library/typings/jquery/jquery.d.ts",
+					"file": "weathervis/overlayprocessing.py",
 					"settings":
 					{
-						"buffer_size": 149259,
+						"buffer_size": 5553,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								100704,
-								100713
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 32546.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/G/WrfVisualizationPlatform/trunk/WrfAnalysisPlatform/WrfVisualizationPlatform/wrf_data_manager.cpp",
-					"settings":
-					{
-						"buffer_size": 24211,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								17174,
-								17174
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 5509.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/E/Data/data_importer.py",
-					"settings":
-					{
-						"buffer_size": 2603,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2164,
-								2177
+								4685,
+								4685
 							]
 						],
 						"settings":
@@ -531,148 +419,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/E/iVisDesigner/server/ivapp/serializers.py",
-					"settings":
-					{
-						"buffer_size": 1465,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								863,
-								863
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/E/iVisDesigner/server/ivapp/views.py",
-					"settings":
-					{
-						"buffer_size": 4576,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1479,
-								1479
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/E/GitHub Project/DefinitelyTyped/d3/d3-tests.ts",
-					"settings":
-					{
-						"buffer_size": 90135,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								38759,
-								38763
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/E/GeoVis/weathervis/views.py",
-					"settings":
-					{
-						"buffer_size": 2303,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 45.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/E/iVisDesigner/server/ivapp/models.py",
-					"settings":
-					{
-						"buffer_size": 1491,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 990.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

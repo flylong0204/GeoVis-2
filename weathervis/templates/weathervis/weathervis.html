@@ -20,14 +20,17 @@
 	var Dragging = function(){
 		var selectedObj = null;
 		
-        function mouseEventHandler(e) {
+        function mousePressHandler(e) {
         	selectedObj = retrieveParentDiv(e.target);
         	while (selectedObj !== null){
         		GeoVis.Utility.eventMapper.raiseEvent(selectedObj.id, e);
         		selectedObj = retrieveParentDiv(selectedObj.parentNode);
         	}
-        	
         };
+        
+        function mouseEventHandler(e) {
+        	GeoVis.Utility.eventMapper.raiseEventAll(e);
+        }
         
         function mouseWheelHandler(e) {
         	var currentObj = retrieveParentDiv(e.target);
@@ -35,17 +38,17 @@
         		GeoVis.Utility.eventMapper.raiseEvent(currentObj.id, e);
         		currentObj = retrieveParentDiv(currentObj.parentNode);
         	}
-        }
+        };
         
         return {
             enable:function(){
-                document.addEventListener('mousedown', mouseEventHandler);
+                document.addEventListener('mousedown', mousePressHandler);
                 document.addEventListener('mousemove', mouseEventHandler);
                 document.addEventListener('mouseup', mouseEventHandler);
                 document.addEventListener('mousewheel', mouseWheelHandler);
             },
             disable:function(){
-                document.removeEventListener('mousedown', mouseEventHandler);
+                document.removeEventListener('mousedown', mousePressHandler);
                 document.removeEventListener('mousemove', mouseEventHandler);
                 document.removeEventListener('mouseup', mouseEventHandler);
                 document.removeEventListener('mousewheel', mouseWheelHandler);
@@ -56,7 +59,7 @@
         	while (obj !== null && obj.tagName !== 'DIV')
         		obj = obj.parentNode;
         	return obj;
-        }
+        };
     }
     
     Dragging().enable();

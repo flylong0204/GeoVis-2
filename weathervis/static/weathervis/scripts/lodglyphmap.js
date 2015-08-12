@@ -24,6 +24,7 @@ var WeatherVis;
             });
             $(this.contentElement).mouseleave(function () {
                 _this.isHoveringContent = false;
+                console.log('mouse leave');
             });
             // construct svg
             this.svg = d3.select('#' + this.contentDivId)
@@ -31,6 +32,7 @@ var WeatherVis;
                 .attr('id', this.widgetId + '-svg')
                 .attr("width", this.w)
                 .attr("height", this.h - 27);
+            this.currentRenderLevel = 1;
             this.loadMap();
             this.loadGlyph();
         }
@@ -54,28 +56,16 @@ var WeatherVis;
                 // new projection
                 _this.projection = d3.geo.mercator().center(newCenter)
                     .scale(_this.scale).translate([_this.w / 2, _this.h / 2]);
-                path = path.projection(_this.projection);
-                _this.svg.selectAll("path")
-                    .data(topo.features)
-                    .enter()
-                    .append("path")
-                    .attr("d", path);
+                _this.renderMap();
             });
         };
         LODGlyphMap.prototype.loadGlyph = function () {
             var _this = this;
-            d3.json('/weathervis/glyphvalues', function (error, data) {
+            var requestStr = '/weathervis/hierarValues?level=' + this.currentRenderLevel;
+            d3.json(requestStr, function (error, data) {
                 var rawData = JSON.parse(data);
                 _this.glyphData = rawData;
-                for (var i in rawData) {
-                    var item = rawData[i];
-                    _this.svg.append('circle')
-                        .attr('cx', _this.projection([item['lon'], item['lat']])[0])
-                        .attr('cy', _this.projection([item['lon'], item['lat']])[1])
-                        .attr('r', 2)
-                        .attr('stroke', 'green')
-                        .attr('fill', 'green');
-                }
+                _this.renderGlyph();
             });
         };
         LODGlyphMap.prototype.onMouseDown = function (e) {
@@ -89,6 +79,7 @@ var WeatherVis;
         LODGlyphMap.prototype.onMouseMove = function (e) {
             if (e.button == 0 && this.isHoveringContent && this.isDragging) {
                 var mouseCenter = [e.clientX - this.divDom.offsetLeft, e.clientY - this.divDom.offsetTop];
+                console.log(this.isHoveringContent);
                 this.projection = d3.geo.mercator().scale(this.scale).center(this.tempDegreeCenter)
                     .translate(mouseCenter);
                 this.tempDegreeCenter = this.projection.invert(mouseCenter);
@@ -106,9 +97,14 @@ var WeatherVis;
             this.scale = this.scale * (1 + delta * 0.05);
             this.projection = d3.geo.mercator().scale(this.scale).center(degreeCenter)
                 .translate(mouseCenter);
+            var tempRenderingLevel = Math.round(this.scale / 150);
+            if (tempRenderingLevel != this.currentRenderLevel) {
+                this.currentRenderLevel = tempRenderingLevel;
+                this.loadGlyph();
+            }
             this.render();
         };
-        LODGlyphMap.prototype.render = function () {
+        LODGlyphMap.prototype.renderMap = function () {
             var path = d3.geo.path().projection(this.projection);
             path = path.projection(this.projection);
             this.svg.selectAll("path").remove();
@@ -117,16 +113,23 @@ var WeatherVis;
                 .enter()
                 .append("path")
                 .attr("d", path);
+        };
+        LODGlyphMap.prototype.renderGlyph = function () {
+            var radiusScale = this.projection([1, 0])[0] - this.projection([0, 0])[0];
             this.svg.selectAll('circle').remove();
             for (var i in this.glyphData) {
                 var item = this.glyphData[i];
                 this.svg.append('circle')
                     .attr('cx', this.projection([item['lon'], item['lat']])[0])
                     .attr('cy', this.projection([item['lon'], item['lat']])[1])
-                    .attr('r', 2)
+                    .attr('r', item['r'] * radiusScale)
                     .attr('stroke', 'green')
                     .attr('fill', 'green');
             }
+        };
+        LODGlyphMap.prototype.render = function () {
+            this.renderMap();
+            this.renderGlyph();
         };
         return LODGlyphMap;
     })(GeoVis.RenderingBoard);
