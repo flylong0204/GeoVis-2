@@ -71,7 +71,7 @@ module WeatherVis {
 		}
         
         loadGlyph() {
-            var requestStr = '/weathervis/hierarValues?level=' + this.currentRenderLevel;
+            var requestStr = '/weathervis/linearOpt?level=' + this.currentRenderLevel;
             d3.json(requestStr, (error: any, data: any) => {
                 var rawData = JSON.parse(data)
                 this.glyphData = rawData;

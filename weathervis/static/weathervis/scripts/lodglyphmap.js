@@ -61,7 +61,7 @@ var WeatherVis;
         };
         LODGlyphMap.prototype.loadGlyph = function () {
             var _this = this;
-            var requestStr = '/weathervis/hierarValues?level=' + this.currentRenderLevel;
+            var requestStr = '/weathervis/linearOpt?level=' + this.currentRenderLevel;
             d3.json(requestStr, function (error, data) {
                 var rawData = JSON.parse(data);
                 _this.glyphData = rawData;

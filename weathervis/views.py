@@ -73,13 +73,14 @@ def kmeansValues(request):
     rootgrp.close()
     
     img = cv2.imread('E:/Geovis/weathervis/test.png')
+    img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     nodeCluster = NodeCluster()
     nodeCluster.processImage(img, level * 50)
     jsData = []
     for index in nodeCluster.labelIndex:
-        x = round(index['X'])
-        y = round(index['Y'])
-        pixelNum = index['pixelNum']
+        x = round(index['x'])
+        y = round(index['y'])
+        pixelNum = index['nodeNum']
         glyphData = {}
         glyphData['r'] = math.sqrt(pixelNum) * (lons_fcst[1][1] - lons_fcst[1][0]) / 3
         glyphData['lon'] = float(lons_fcst[y][x])
@@ -104,8 +105,6 @@ def hierarValues(request):
     test = img[0, 0]
     nodeCluster = NodeCluster()
     nodeCluster.processImageHier(img, level * 50)
-    proc = OverlayProcessor(nodeCluster)
-    proc.heuristicSolve()
     jsData = []
     for index in nodeCluster.labelIndex:
         x = round(index['x'])
@@ -116,6 +115,39 @@ def hierarValues(request):
         glyphData['lon'] = float(lons_fcst[y][x])
         glyphData['lat'] = float(lats_fcst[y][x])
         jsData.append(glyphData)
+    try:
+        json_data = json.dumps(jsData)
+    except Exception as ex:
+        print ex    
+    return JsonResponse(json_data, safe=False)
+
+def linearOpt(request):
+    level = int(request.GET['level'])
+    infoPath = 'E:/Data/refcstv2_precip_ccpav2_000_to_024.nc'
+    rootgrp = Dataset(infoPath, format='NETCDF4')
+    lons_fcst = numpy.ma.getdata(rootgrp.variables['lons_fcst'][:][:])
+    lats_fcst = numpy.ma.getdata(rootgrp.variables['lats_fcst'][:][:])
+    rootgrp.close()
+    
+    img = cv2.imread('E:/Geovis/weathervis/test.png')
+    img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    test = img[0, 0]
+    nodeCluster = NodeCluster()
+    nodeCluster.processImageHier(img, level * 50)
+    proc = OverlayProcessor(nodeCluster)
+    proc.heuristicSolve()
+    jsData = []
+    for i in range(0, len(proc.S)):
+        if (proc.z[i] == 1):
+            index = proc.S[i]
+            x = round(index['x'])
+            y = round(index['y'])
+            pixelNum = index['nodeNum']
+            glyphData = {}
+            glyphData['r'] = (index['level'] - 1) * 2 * (lons_fcst[1][1] - lons_fcst[1][0]) / 3
+            glyphData['lon'] = float(lons_fcst[y][x])
+            glyphData['lat'] = float(lats_fcst[y][x])
+            jsData.append(glyphData)
     try:
         json_data = json.dumps(jsData)
     except Exception as ex:

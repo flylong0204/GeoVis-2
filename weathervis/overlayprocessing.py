@@ -11,6 +11,7 @@ class NodeCluster:
     
     def reindexLabels(self, img):
         height, width = img.shape[:2]
+        self.pixelNum = height * width
         seqIndex = {}
         for h in range(0, height):
             for w in range(0, width):
@@ -32,20 +33,22 @@ class NodeCluster:
                     self.labelIndex[tempIndex]['nodeNum'] += 1
                     self.labelIndex[tempIndex]['mean'] += self.image[h, w]
         for index in self.labelIndex:
-            index['x'] /= float(index['nodeNum'])
-            index['y'] /= float(index['nodeNum'])
-            index['mean'] /= float(index['nodeNum'])
+            if (index['nodeNum'] != 0):
+                index['x'] /= float(index['nodeNum'])
+                index['y'] /= float(index['nodeNum'])
+                index['mean'] /= float(index['nodeNum'])
         for h in range(0, height):
             for w in range(0, width):
                 currentLabel = self.pixelLabelIndex[h, w]
                 index = self.labelIndex[seqIndex[currentLabel]]
                 index['var'] += pow(self.image[h, w] - index['mean'], 2)
         for index in self.labelIndex:
-            index['var'] = sqrt(index['var'] / float(index['nodeNum']))
+            if (index['nodeNum'] != 0):
+                index['var'] = sqrt(index['var'] / float(index['nodeNum']))
     
     def processImage(self, img, segCount):
         self.image = img
-        self.pixelLabelIndex = segmentation.slic(img, compactness=30, n_segments=segCount)
+        self.pixelLabelIndex = segmentation.slic(img, compactness=0.01, n_segments=segCount)
         self.reindexLabels(img)
             
     def processImageHier(self, img, segCount):
@@ -79,7 +82,7 @@ class OverlayProcessor:
         #x: if TNi is assigned to CSj\
         self.S = []
         for index in self.nodes.labelIndex:
-            for level in range(0, 2):
+            for level in range(2, 5):
                 newSite = {}
                 newSite['x'] = index['x']
                 newSite['y'] = index['y']
@@ -108,7 +111,8 @@ class OverlayProcessor:
                 self.S[i]['mean'] /= float(self.S[i]['nodeNum'])
         for i in range(0, self.nodeNum):
             for j in range(0, len(self.S)):
-                self.S[j]['var'] += pow(self.nodes.labelIndex[i]['mean'] - self.S[j]['mean'], 2)
+                if (self.a[i][j] == 1):
+                    self.S[j]['var'] += pow(self.nodes.labelIndex[i]['mean'] - self.S[j]['mean'], 2)
         for i in range(0, len(self.S)):
             if (self.S[i]['nodeNum'] != 0):
                 self.S[i]['var'] /= float(self.S[i]['nodeNum'])
@@ -116,7 +120,7 @@ class OverlayProcessor:
         
         self.w = np.zeros(self.nodeNum, np.float32)
         for i in range(0, len(self.w)):
-            self.w[i] = self.nodes.labelIndex[i]['nodeNum']
+            self.w[i] = self.nodes.labelIndex[i]['nodeNum'] / float(self.nodes.pixelNum)
             
         self.ca = np.zeros((self.nodeNum, len(self.S)), np.float32)
         for i in range(0, self.nodeNum):
@@ -131,9 +135,6 @@ class OverlayProcessor:
         self.ci = np.zeros(len(self.S), np.float32)
         for i in range(0, len(self.S)):
             self.ci[i] =  abs(self.S[i]['level'] - self.currentLevel)
-            
-        self.z = np.zeros(len(self.S), np.uint8)
-        self.x = np.zeros((self.nodeNum, len(self.S)), np.uint8)
         
     
     def heuristicSolve(self):
@@ -150,15 +151,16 @@ class OverlayProcessor:
         for i in range(0, len(self.ci)):
             tempVal = self.ci[i]
             for j in range(0, self.nodeNum):
-                tempVal += (self.ca[j][i] + self.ce[j][i]) * self.w[j] * 1e-8
-            myObj.append(tempVal)
+                tempVal += (self.ca[j][i] + self.ce[j][i]) * self.w[j]
+            print tempVal
+            myObj.append(float(tempVal))
             myUb.append(1)
             myLb.append(0)
             myNames.append(str(i))
         try:
             prob.variables.add(obj=myObj, ub=myUb, names=myNames)
-        except Exception:
-            print prob
+        except Exception as ex:
+            print ex
         
         linExpr = []
         senses = []
@@ -168,10 +170,10 @@ class OverlayProcessor:
             tempVal = []
             for j in range(0, len(self.S)):
                 tempInd.append(j)
-                tempVal.append(1)
+                tempVal.append(1 * self.a[i][j])
             tempExpr = [tempInd, tempVal]
             linExpr.append(tempExpr)
-            senses.append('G')
+            senses.append('E')
             rhs.append(1)
         prob.linear_constraints.add(lin_expr = linExpr, senses = senses, rhs = rhs)
         prob.solve()
@@ -179,6 +181,20 @@ class OverlayProcessor:
         # the following line prints the corresponding string
         print(prob.solution.status[prob.solution.get_status()])
         print("Solution value  = ", prob.solution.get_objective_value())
+        
+        
+        numrows = prob.linear_constraints.get_num()
+        numcols = prob.variables.get_num()
+        slack = prob.solution.get_linear_slacks()
+        pi = prob.solution.get_dual_values()
+        self.z = prob.solution.get_values()
+        dj = prob.solution.get_reduced_costs()
+        for i in range(numrows):
+            print("Row %d:  Slack = %10f  Pi = %10f" % (i, slack[i], pi[i]))
+        for j in range(numcols):
+            print("Column %d:  Value = %10f Reduced cost = %10f" %
+                  (j, self.z[j], dj[j]))
+        
         
         return minCost
 

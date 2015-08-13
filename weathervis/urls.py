@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'glyphvalues/$', views.glyphValues, name='index'),
     url(r'kmeansValues/$', views.kmeansValues, name='kmeans'),
     url(r'hierarValues/$', views.hierarValues, name='hierar'),
+    url(r'linearOpt/$', views.linearOpt, name='linear'),
 ]
