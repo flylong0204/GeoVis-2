@@ -3,6 +3,7 @@ from skimage import segmentation
 from sklearn.feature_extraction.image import grid_to_graph
 from sklearn.cluster import AgglomerativeClustering
 from math import sqrt
+import cplex
 
 class NodeCluster:
     def __init__(self):
@@ -60,13 +61,13 @@ class NodeCluster:
 class OverlayProcessor:
     def __init__(self, nodes):
         self.nodes = nodes
-        self.nodeNum = nodes.lables.length()
+        self.nodeNum = len(nodes.labelIndex)
+        self.currentLevel = 1
     
     def setCurrentLevel(self, level):
         self.currentLevel = level
     
     def updateParameters(self):
-        self.a = np.identity(self.nodeNum, np.float32)
         #S: candidate sites, which are self.nodes at different levels
         #T: test nodes, which are self.nodes
         #a: if CSi can be accessed by CSj
@@ -76,65 +77,108 @@ class OverlayProcessor:
         #CI: glyph visualization cost
         #Z: if a glyph is positioned
         #x: if TNi is assigned to CSj\
-        S = []
+        self.S = []
         for index in self.nodes.labelIndex:
-            for level in range(0, 5):
+            for level in range(0, 2):
                 newSite = {}
                 newSite['x'] = index['x']
                 newSite['y'] = index['y']
                 newSite['level'] = level
-                index['mean'] = 0
-                index['var'] = 0
-                index['nodeNum'] = 0
-                S.append(newSite)
+                newSite['mean'] = 0
+                newSite['var'] = 0
+                newSite['nodeNum'] = 0
+                self.S.append(newSite)
                 
-        a = np.zeros((len(self.nodes), len(S)), np.uint8)
-        for i in range(0, len(self.nodes)):
-            for j in range(0, len(S)):
-                node = self.nodes[i]
-                site = S[j]
-                distance = sqrt(pow(node['x'] - site['x'], 2) + pow(node['y'] - site['y']))
+        self.a = np.zeros((self.nodeNum, len(self.S)), np.uint8)
+        for i in range(0, self.nodeNum):
+            for j in range(0, len(self.S)):
+                node = self.nodes.labelIndex[i]
+                site = self.S[j]
+                distance = sqrt(pow(node['x'] - site['x'], 2) + pow(node['y'] - site['y'], 2))
                 if (distance < site['level']):
-                    a[i][j] = 1
+                    self.a[i][j] = 1
         #Update site mean and variance            
-        for i in range(0, len(self.nodes)):
-            for j in range(0, len(S)):
-                if (a[i][j] == 1):
-                    S[j]['mean'] += self.nodes[j]['mean']
-                    S[j]['nodeNum'] += 1
-        for i in range(0, len(S)):
-            S[i]['mean'] /= float(S[i]['nodeNum'])
-        for i in range(0, len(self.nodes)):
-            for j in range(0, len(S)):
-                S[j]['var'] += pow(self.nodes[i]['mean'] - S[j]['mean'], 2)
-        for i in range(0, len(S)):
-            S[i]['var'] /= float(S[i]['nodeNum'])
+        for i in range(0, self.nodeNum):
+            for j in range(0, len(self.S)):
+                if (self.a[i][j] == 1):
+                    self.S[j]['mean'] += self.nodes.labelIndex[i]['mean']
+                    self.S[j]['nodeNum'] += 1
+        for i in range(0, len(self.S)):
+            if (self.S[i]['nodeNum'] != 0):
+                self.S[i]['mean'] /= float(self.S[i]['nodeNum'])
+        for i in range(0, self.nodeNum):
+            for j in range(0, len(self.S)):
+                self.S[j]['var'] += pow(self.nodes.labelIndex[i]['mean'] - self.S[j]['mean'], 2)
+        for i in range(0, len(self.S)):
+            if (self.S[i]['nodeNum'] != 0):
+                self.S[i]['var'] /= float(self.S[i]['nodeNum'])
+                self.S[i]['var'] = sqrt(self.S[i]['var'])
         
-        w = np.zeros(len(self.nodes), np.float32)
-        for i in range(0, len(w)):
-            w[i] = self.nodes[i]['nodeNum']
+        self.w = np.zeros(self.nodeNum, np.float32)
+        for i in range(0, len(self.w)):
+            self.w[i] = self.nodes.labelIndex[i]['nodeNum']
             
-        ca = np.zeros((len(self.nodes), len(S)), np.float32)
-        for i in range(0, len(self.nodes)):
-            for j in range(0, len(S)):
-                ca[i][j] = abs(self.nodes[i]['mean'] - S[j]['mean'])
+        self.ca = np.zeros((self.nodeNum, len(self.S)), np.float32)
+        for i in range(0, self.nodeNum):
+            for j in range(0, len(self.S)):
+                self.ca[i][j] = abs(self.nodes.labelIndex[i]['mean'] - self.S[j]['mean'])
         
-        ce = np.zeros((len(self.nodes), len(S)), np.float32)
-        for i in range(0, len(self.nodes)):
-            for j in range(0, len(S)):
-                ce[i][j] = abs(self.nodes[i]['var'] - S[j]['var'])
+        self.ce = np.zeros((self.nodeNum, len(self.S)), np.float32)
+        for i in range(0, self.nodeNum):
+            for j in range(0, len(self.S)):
+                self.ce[i][j] = abs(self.nodes.labelIndex[i]['var'] - self.S[j]['var'])
                 
-        ci = np.zeros(len(S), np.float32)
-        for i in range(0, len(S)):
-            ci[i] =  abs(S[i]['level'] - self.currentLevel)
+        self.ci = np.zeros(len(self.S), np.float32)
+        for i in range(0, len(self.S)):
+            self.ci[i] =  abs(self.S[i]['level'] - self.currentLevel)
             
-        z = np.zeros(len(S), np.uint8)
-        x = np.zeros((len(self.nodes), len(S)), np.uint8)
+        self.z = np.zeros(len(self.S), np.uint8)
+        self.x = np.zeros((self.nodeNum, len(self.S)), np.uint8)
         
     
     def heuristicSolve(self):
         minCost = 0.0
         self.updateParameters()
         #TODO: integer programming
+        prob = cplex.Cplex()
+        prob.objective.set_sense(prob.objective.sense.minimize)
+        
+        myObj = []
+        myUb = []
+        myLb = []
+        myNames = []
+        for i in range(0, len(self.ci)):
+            tempVal = self.ci[i]
+            for j in range(0, self.nodeNum):
+                tempVal += (self.ca[j][i] + self.ce[j][i]) * self.w[j] * 1e-8
+            myObj.append(tempVal)
+            myUb.append(1)
+            myLb.append(0)
+            myNames.append(str(i))
+        try:
+            prob.variables.add(obj=myObj, ub=myUb, names=myNames)
+        except Exception:
+            print prob
+        
+        linExpr = []
+        senses = []
+        rhs = []
+        for i in range(0, self.nodeNum):
+            tempInd = []
+            tempVal = []
+            for j in range(0, len(self.S)):
+                tempInd.append(j)
+                tempVal.append(1)
+            tempExpr = [tempInd, tempVal]
+            linExpr.append(tempExpr)
+            senses.append('G')
+            rhs.append(1)
+        prob.linear_constraints.add(lin_expr = linExpr, senses = senses, rhs = rhs)
+        prob.solve()
+        print('Solution status = ', prob.solution.get_status())
+        # the following line prints the corresponding string
+        print(prob.solution.status[prob.solution.get_status()])
+        print("Solution value  = ", prob.solution.get_objective_value())
+        
         return minCost
 

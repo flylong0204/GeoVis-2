@@ -104,6 +104,8 @@ def hierarValues(request):
     test = img[0, 0]
     nodeCluster = NodeCluster()
     nodeCluster.processImageHier(img, level * 50)
+    proc = OverlayProcessor(nodeCluster)
+    proc.heuristicSolve()
     jsData = []
     for index in nodeCluster.labelIndex:
         x = round(index['x'])
