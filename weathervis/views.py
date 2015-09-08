@@ -9,6 +9,7 @@ from overlayprocessing import *
 import cv2
 import math
 
+
 def obj_dict(obj):
     return obj.__dict__
 
@@ -123,6 +124,9 @@ def hierarValues(request):
 
 def linearOpt(request):
     level = int(request.GET['level'])
+    alpha = float(request.GET['a'])
+    beta = float(request.GET['b'])
+    theta = float(request.GET['c'])
     infoPath = 'E:/Data/refcstv2_precip_ccpav2_000_to_024.nc'
     rootgrp = Dataset(infoPath, format='NETCDF4')
     lons_fcst = numpy.ma.getdata(rootgrp.variables['lons_fcst'][:][:])
@@ -133,24 +137,33 @@ def linearOpt(request):
     img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     test = img[0, 0]
     nodeCluster = NodeCluster()
-    nodeCluster.processImageHier(img, level * 50)
+    nodeCluster.processImageHier(img, 200)
+    # update node x y coordinate
+    for index in nodeCluster.labelIndex:
+        x = int(index['x'])
+        y = int(index['y'])
+        index['x'] = lons_fcst[y][x]
+        index['y'] = lats_fcst[y][x]
     proc = OverlayProcessor(nodeCluster)
+    proc.setCurrentLevel(level)
+    proc.setParameters(alpha, beta, theta)
     proc.heuristicSolve()
     jsData = []
+    nodeCount = 0
     for i in range(0, len(proc.S)):
         if (proc.z[i] == 1):
             index = proc.S[i]
-            x = round(index['x'])
-            y = round(index['y'])
             pixelNum = index['nodeNum']
             glyphData = {}
-            glyphData['r'] = (index['level'] - 1) * 2 * (lons_fcst[1][1] - lons_fcst[1][0]) / 3
-            glyphData['lon'] = float(lons_fcst[y][x])
-            glyphData['lat'] = float(lats_fcst[y][x])
+            glyphData['r'] = (index['level']) * 0.2
+            glyphData['lon'] = float(index['x'])
+            glyphData['lat'] = float(index['y'])
             jsData.append(glyphData)
+            nodeCount += 1
     try:
         json_data = json.dumps(jsData)
     except Exception as ex:
         print ex    
+    print nodeCount
     return JsonResponse(json_data, safe=False)
             

@@ -50,7 +50,15 @@ var WeatherVis;
                 var bounds = path.bounds(topo);
                 var hscale = _this.scale * _this.w / (bounds[1][0] - bounds[0][0]);
                 var vscale = _this.scale * _this.h / (bounds[1][1] - bounds[0][1]);
-                _this.scale = (hscale < vscale) ? hscale : vscale;
+                if (hscale < vscale) {
+                    _this.scale = hscale;
+                    _this.degreePerPixel = (bounds[1][0] - bounds[0][0]) / _this.w;
+                }
+                else {
+                    _this.scale = vscale;
+                    _this.degreePerPixel = (bounds[1][1] - bounds[0][1]) / _this.w;
+                }
+                _this.currentRenderLevel = Math.round(_this.degreePerPixel * 150 / _this.scale / 1 * 45);
                 var newCenter = _this.projection.invert([(bounds[1][0] + bounds[0][0]) / 2, (bounds[1][1] + bounds[0][1]) / 2]);
                 ;
                 // new projection
@@ -61,7 +69,7 @@ var WeatherVis;
         };
         LODGlyphMap.prototype.loadGlyph = function () {
             var _this = this;
-            var requestStr = '/weathervis/linearOpt?level=' + this.currentRenderLevel;
+            var requestStr = '/weathervis/linearOpt?level=' + this.currentRenderLevel + '&a=1&b=0.5&c=0.01';
             d3.json(requestStr, function (error, data) {
                 var rawData = JSON.parse(data);
                 _this.glyphData = rawData;
@@ -97,7 +105,7 @@ var WeatherVis;
             this.scale = this.scale * (1 + delta * 0.05);
             this.projection = d3.geo.mercator().scale(this.scale).center(degreeCenter)
                 .translate(mouseCenter);
-            var tempRenderingLevel = Math.round(this.scale / 150);
+            var tempRenderingLevel = Math.round(this.degreePerPixel * 150 / this.scale / 1 * 45);
             if (tempRenderingLevel != this.currentRenderLevel) {
                 this.currentRenderLevel = tempRenderingLevel;
                 this.loadGlyph();

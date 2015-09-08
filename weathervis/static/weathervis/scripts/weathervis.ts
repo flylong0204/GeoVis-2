@@ -24,7 +24,9 @@ module WeatherVis {
             
 			// construct objects
 			this.lodMap = new LODGlyphMap(this.lodMapId, 0, 0, 700, 500);
-            this.functionPanel = new GeoVis.FunctionPanel('tool-div');
+            // this.functionPanel = new GeoVis.FunctionPanel('tool-div');
+            
+            // 
 		}
 
 		render() {

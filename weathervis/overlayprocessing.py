@@ -3,6 +3,7 @@ from skimage import segmentation
 from sklearn.feature_extraction.image import grid_to_graph
 from sklearn.cluster import AgglomerativeClustering
 from math import sqrt
+import math
 import cplex
 
 class NodeCluster:
@@ -45,6 +46,15 @@ class NodeCluster:
         for index in self.labelIndex:
             if (index['nodeNum'] != 0):
                 index['var'] = sqrt(index['var'] / float(index['nodeNum']))
+                index['var'] /= (index['mean'] + 1e-5)
+        #normalize mean
+        minMean = 1e10
+        maxMean = -1e10
+        for index in self.labelIndex:
+            if (index['mean'] > maxMean): maxMean = index['mean']
+            if (index['mean'] < minMean): minMean = index['mean']
+        for index in self.labelIndex:
+            index['mean'] = (index['mean'] - minMean) / (maxMean - minMean)
     
     def processImage(self, img, segCount):
         self.image = img
@@ -66,9 +76,17 @@ class OverlayProcessor:
         self.nodes = nodes
         self.nodeNum = len(nodes.labelIndex)
         self.currentLevel = 1
+        self.alpha = 0.5
+        self.beta = 0.5
+        self.theta = 0.5
     
     def setCurrentLevel(self, level):
         self.currentLevel = level
+        
+    def setParameters(self, a, b, c):
+        self.alpha = a
+        self.beta = b 
+        self.theta = c
     
     def updateParameters(self):
         #S: candidate sites, which are self.nodes at different levels
@@ -82,7 +100,7 @@ class OverlayProcessor:
         #x: if TNi is assigned to CSj\
         self.S = []
         for index in self.nodes.labelIndex:
-            for level in range(2, 5):
+            for level in range(2, 6):
                 newSite = {}
                 newSite['x'] = index['x']
                 newSite['y'] = index['y']
@@ -98,14 +116,14 @@ class OverlayProcessor:
                 node = self.nodes.labelIndex[i]
                 site = self.S[j]
                 distance = sqrt(pow(node['x'] - site['x'], 2) + pow(node['y'] - site['y'], 2))
-                if (distance < site['level']):
+                if (distance < site['level'] * 0.5):
                     self.a[i][j] = 1
         #Update site mean and variance            
         for i in range(0, self.nodeNum):
             for j in range(0, len(self.S)):
                 if (self.a[i][j] == 1):
-                    self.S[j]['mean'] += self.nodes.labelIndex[i]['mean']
-                    self.S[j]['nodeNum'] += 1
+                    self.S[j]['mean'] += self.nodes.labelIndex[i]['mean'] * self.nodes.labelIndex[i]['nodeNum']
+                    self.S[j]['nodeNum'] += self.nodes.labelIndex[i]['nodeNum']
         for i in range(0, len(self.S)):
             if (self.S[i]['nodeNum'] != 0):
                 self.S[i]['mean'] /= float(self.S[i]['nodeNum'])
@@ -134,13 +152,15 @@ class OverlayProcessor:
                 
         self.ci = np.zeros(len(self.S), np.float32)
         for i in range(0, len(self.S)):
-            self.ci[i] =  abs(self.S[i]['level'] - self.currentLevel)
+            if self.S[i]['level'] < self.currentLevel:
+                self.ci[i] = math.exp(-1 * (self.S[i]['level'] - self.currentLevel))
+            else:
+                self.ci[i] = math.exp(-0.1 * (self.S[i]['level'] - self.currentLevel))
         
     
     def heuristicSolve(self):
         minCost = 0.0
         self.updateParameters()
-        #TODO: integer programming
         prob = cplex.Cplex()
         prob.objective.set_sense(prob.objective.sense.minimize)
         
@@ -149,16 +169,21 @@ class OverlayProcessor:
         myLb = []
         myNames = []
         for i in range(0, len(self.ci)):
-            tempVal = self.ci[i]
+            zPara = 0
+            nodeCount = 0
             for j in range(0, self.nodeNum):
-                tempVal += (self.ca[j][i] + self.ce[j][i]) * self.w[j]
-            print tempVal
-            myObj.append(float(tempVal))
+                if (self.a[j][i] == 1):
+                    zPara += self.ca[j][i] * self.alpha
+                    nodeCount += 1
+            if (nodeCount != 0):
+                zPara /= nodeCount
+            zPara += self.ci[i] * self.theta
+            myObj.append(float(zPara))
             myUb.append(1)
             myLb.append(0)
             myNames.append(str(i))
         try:
-            prob.variables.add(obj=myObj, ub=myUb, names=myNames)
+            prob.variables.add(obj=myObj, lb=myLb, ub=myUb, types=[prob.variables.type.binary] * len(self.ci), names=myNames)
         except Exception as ex:
             print ex
         
@@ -173,7 +198,7 @@ class OverlayProcessor:
                 tempVal.append(1 * self.a[i][j])
             tempExpr = [tempInd, tempVal]
             linExpr.append(tempExpr)
-            senses.append('E')
+            senses.append('G')
             rhs.append(1)
         prob.linear_constraints.add(lin_expr = linExpr, senses = senses, rhs = rhs)
         prob.solve()
@@ -186,14 +211,17 @@ class OverlayProcessor:
         numrows = prob.linear_constraints.get_num()
         numcols = prob.variables.get_num()
         slack = prob.solution.get_linear_slacks()
-        pi = prob.solution.get_dual_values()
+        #pi = prob.solution.get_dual_values()
         self.z = prob.solution.get_values()
-        dj = prob.solution.get_reduced_costs()
-        for i in range(numrows):
-            print("Row %d:  Slack = %10f  Pi = %10f" % (i, slack[i], pi[i]))
+#         dj = prob.solution.get_reduced_costs()
+#         for i in range(numrows):
+#             print("Row %d:  Slack = %10f  Pi = %10f" % (i, slack[i], pi[i]))
+#         for j in range(numcols):
+#             print("Column %d:  Value = %10f Reduced cost = %10f" %
+#                   (j, self.z[j], dj[j]))
         for j in range(numcols):
-            print("Column %d:  Value = %10f Reduced cost = %10f" %
-                  (j, self.z[j], dj[j]))
+            print("Column %d:  Value = %10f" %
+                  (j, self.z[j]))
         
         
         return minCost

@@ -12,6 +12,7 @@ module WeatherVis {
 
 	export class LODGlyphMap extends GeoVis.RenderingBoard {
         protected scale: number;
+        protected degreePerPixel: number;
         protected projection: any;
         protected jsonData: any;
         protected glyphData: any;
@@ -60,7 +61,15 @@ module WeatherVis {
                 var bounds  = path.bounds(topo);
                 var hscale  = this.scale * this.w  / (bounds[1][0] - bounds[0][0]);
                 var vscale  = this.scale * this.h / (bounds[1][1] - bounds[0][1]);
-                this.scale   = (hscale < vscale) ? hscale : vscale;
+                if (hscale < vscale){
+                    this.scale   = hscale;
+                    this.degreePerPixel = (bounds[1][0] - bounds[0][0]) / this.w;
+                } else {
+                    this.scale = vscale; 
+                    this.degreePerPixel = (bounds[1][1] - bounds[0][1]) / this.w;
+                }
+                this.currentRenderLevel = Math.round(this.degreePerPixel * 150 / this.scale / 1 * 45);
+                    
                 var newCenter = this.projection.invert([(bounds[1][0] + bounds[0][0]) / 2, (bounds[1][1] + bounds[0][1]) / 2]);;
 
                 // new projection
@@ -71,7 +80,7 @@ module WeatherVis {
 		}
         
         loadGlyph() {
-            var requestStr = '/weathervis/linearOpt?level=' + this.currentRenderLevel;
+            var requestStr = '/weathervis/linearOpt?level=' + this.currentRenderLevel + '&a=1&b=0.5&c=0.01';
             d3.json(requestStr, (error: any, data: any) => {
                 var rawData = JSON.parse(data)
                 this.glyphData = rawData;
@@ -112,7 +121,7 @@ module WeatherVis {
             this.scale = this.scale * (1 + delta * 0.05);
             this.projection = d3.geo.mercator().scale(this.scale).center(degreeCenter)
                                     .translate(mouseCenter);
-            var tempRenderingLevel = Math.round(this.scale / 150);
+            var tempRenderingLevel = Math.round(this.degreePerPixel * 150 / this.scale / 1 * 45);
             if (tempRenderingLevel != this.currentRenderLevel) {
                this.currentRenderLevel = tempRenderingLevel;
                this.loadGlyph(); 
