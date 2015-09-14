@@ -3286,6 +3286,8 @@ declare module d3 {
 
             clip(subject: Array<[number, number]>): Array<[number, number]>;
         }
+        
+        export function contour(vertices: Array<[number, number]>): Array<[number, number]>;
     }
 }
 

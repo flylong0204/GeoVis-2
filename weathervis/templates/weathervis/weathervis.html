@@ -1,17 +1,93 @@
 {% extends "main/layout.html" %}
 
 {% block content %}
-<div id='map-div' class='map-panel'></div>
+<div id="center-div" class="col-md-12">
+	<div id="center-div-board" class="col-md-9">
+		<div id="center-div-board-lodmap1"></div>
+		<div id="center-div-board-lodmap2"></div>
+		<div id="center-div-board-lodmap3"></div>
+		<div id="center-div-board-lodmap4"></div>
+	</div>
+	<div id="center-div-lod-para-tab" class="col-md-3">
+		<div id="cand-tab">
+			<h3>Candidate Selection</h3>
+	  		<div class="input-group">
+	  			<span class="input-group-addon">Candidate Number</span>
+	  			<input id="cand-number-input" type="text" class="form-control" placeholder="200" aria-describedby="basic-addon1">
+	  			<span class="input-group-btn">
+	  				<button id="cand-button" class="btn btn-default" type="button" onclick="updateCandidate()">Go!</button>
+	  			</span>
+  			</div>
+	    </div>
+	    <div id="sopt-tab">
+	    	<h3>Single Level Optimization</h3>
+            <div class="col-md-6" style="padding:0px 10px 0px 0px;">
+                <div class="input-group">
+                    <span class="input-group-addon" style="width:70px;">Alpha</span>
+                    <input id="alpha-input" type="text" class="form-control" placeholder="1.0" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="col-md-6" style="padding:0px 0px 0px 10px;">
+                <div class="input-group">
+                    <span class="input-group-addon" style="width:70px;">Beta</span>
+                    <input id="beta-input" type="text" class="form-control" placeholder="1.0" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="col-md-6" style="padding:0px 10px 0px 0px;">
+                <div class="input-group">
+                    <span class="input-group-addon" style="width:70px;">Alpha</span>
+                    <input id="theta-input" type="text" class="form-control" placeholder="1.0" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="col-md-6" style="padding:0px 0px 0px 10px;">                
+                <span class="input-group-btn">
+	  				<button id="unupdate-button" class="btn btn-default" type="button" onclick="udpateUncertainty()">Un!</button>
+	  			</span>
+	  			
+	  			<span class="input-group-btn">
+	  				<button id="exec-singopt-button" class="btn btn-default" type="button" onclick="execSingleLevelOpt()">opt!</button>
+	  			</span>
+            </div>
+            
+	    </div>
+	    </br>
+        </br>
+	    <div id="copt-tab">
+	    	<h3>Consistency Optimization</h3>
+            <div class="col-md-6" style="padding:0px 10px 0px 0px;">
+                <div class="input-group">
+                    <span class="input-group-addon" style="width:70px;">Gamma</span>
+                    <input id="gamma-input" type="text" class="form-control" placeholder="1.0" aria-describedby="basic-addon1">
+                    <span class="input-group-btn">
+	  					<button id="consopt-button" class="btn btn-default" type="button" onclick="optConsistency()">Go!</button>
+	  				</span>
+                </div>
+            </div>
+	    </div>
+	    </br>
+	    <div id="result-tab">
+	    	<h3>Final Result</h3>
+            <div class="col-md-12">
+                <div class="input-group">
+                    <span class="input-group-btn">
+	  					<button id="update-result-button" class="btn btn-default" type="button" onclick="updateResult()">opt!</button>
+	  				</span>
+	  				
+                </div>
+            </div>
+	    </div>	  	
+	</div>
+</div>
 {% endblock %}
 
 {% block scripts %}
-<script type="text/javascript" src='/static/d3.v3.js'></script>
-<script type="text/javascript" src='/static/topojson.js'></script>
+<script type="text/javascript" src="/static/d3.v3.js"></script>
+<script type="text/javascript" src="/static/contour.js"></script>
+<script type="text/javascript" src="/static/topojson.js"></script>
 <script type="text/javascript" src="/static/scripts/utility.js"></script>
 <script type="text/javascript" src="/static/scripts/widgets.js"></script>
-<script type="text/javascript" src="/static/scripts/functionpanel.js"></script>
-<script type="text/javascript" src="/static/scripts/renderingboard.js"></script>
 <script type="text/javascript" src="/static/weathervis/scripts/lodglyphmap.js"></script>
+<script type="text/javascript" src="/static/weathervis/scripts/lodparawidget.js"></script>
 <script type="text/javascript" src="/static/weathervis/scripts/weathervis.js"></script>
 <script type="text/javascript">
 	var Dragging = function(){
@@ -39,27 +115,87 @@
         
         return {
             enable:function(){
-                document.addEventListener('mousedown', mousePressHandler);
-                document.addEventListener('mousemove', mouseEventHandler);
-                document.addEventListener('mouseup', mouseEventHandler);
-                document.addEventListener('mousewheel', mouseWheelHandler);
+                document.addEventListener("mousedown", mousePressHandler);
+                document.addEventListener("mousemove", mouseEventHandler);
+                document.addEventListener("mouseup", mouseEventHandler);
+                document.addEventListener("mousewheel", mouseWheelHandler);
             },
             disable:function(){
-                document.removeEventListener('mousedown', mousePressHandler);
-                document.removeEventListener('mousemove', mouseEventHandler);
-                document.removeEventListener('mouseup', mouseEventHandler);
-                document.removeEventListener('mousewheel', mouseWheelHandler);
+                document.removeEventListener("mousedown", mousePressHandler);
+                document.removeEventListener("mousemove", mouseEventHandler);
+                document.removeEventListener("mouseup", mouseEventHandler);
+                document.removeEventListener("mousewheel", mouseWheelHandler);
             }
         }
         
         function retrieveParentDiv(obj){
-        	while (obj !== null && obj.tagName !== 'DIV')
+        	while (obj !== null && obj.tagName !== "DIV")
         		obj = obj.parentNode;
         	return obj;
         };
     }
     
     Dragging().enable();
+</script>
+<script>
+function updateCandidate() {
+    var candNumber = document.getElementById("cand-number-input").value;
+    document.getElementById("cand-button").innerText = "...";
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        	document.getElementById("cand-button").innerText = "Go!";	
+        }
+    }
+    xmlhttp.open("GET", "generateCand?n=" + candNumber, true);
+    xmlhttp.send();
+}
+
+function udpateUncertainty() {
+	xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        	document.getElementById("unupdate-button").innerText = "updated!";	
+        }
+    }
+    xmlhttp.open("GET", "updateUncertainty", true);
+    xmlhttp.send();
+}
+
+function execSingleLevelOpt() {
+	xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        	document.getElementById("exec-singopt-button").innerText = "exected!";
+        	updateResult();
+        }
+    }
+    var str = "execSingleOpt?a=" + document.getElementById("alpha-input").value;
+    str += "&b=" + document.getElementById("beta-input").value;
+    str += "&c=" + document.getElementById("theta-input").value;
+    xmlhttp.open("GET", str, true);
+    xmlhttp.send();
+}
+
+function optConsistency() {
+	xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        	document.getElementById("consopt-button").innerText = "exected!";
+        	updateResult();
+        }
+    }
+    var str = "consistencyOpt?gamma=" + document.getElementById("gamma-input").value;
+    str += "&a=" + document.getElementById("alpha-input").value;
+    str += "&b=" + document.getElementById("beta-input").value;
+    str += "&c=" + document.getElementById("theta-input").value;
+    xmlhttp.open("GET", str, true);
+    xmlhttp.send();
+}
+
+function updateResult() {
+	vis.updateViews();
+}
 </script>
 {% endblock %}
 

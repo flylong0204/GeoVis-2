@@ -1,30 +1,29 @@
 /// <reference path="weathervislib.d.ts" />
 /// <reference path="lodglyphmap.ts" />
-/// <reference path="../../../../static/scripts/utility.ts" />
-/// <reference path="../../../../static/scripts/functionpanel.ts" />
+/// <reference path="lodparawidget.ts" />
 var WeatherVis;
 (function (WeatherVis) {
-    var TempVis = (function () {
-        function TempVis(divId) {
+    var WeatherVisMain = (function () {
+        function WeatherVisMain(divId) {
             this.divId = divId;
-            this.lodMapId = divId + 'LodMap';
-            var divDom = document.getElementById(divId);
-            // construct html dives
-            var lodMapDivDom = document.createElement('div');
-            var divHtml = "<div class='rendering-div'"
-                + "id='" + this.lodMapId + "'></div>";
-            lodMapDivDom.innerHTML = divHtml;
-            divDom.appendChild(lodMapDivDom);
-            // construct objects
-            this.lodMap = new WeatherVis.LODGlyphMap(this.lodMapId, 0, 0, 700, 500);
-            // this.functionPanel = new GeoVis.FunctionPanel('tool-div');
-            // 
+            this.lodMap = new WeatherVis.LODGlyphMap('center-div-board', 100, 100, 400, 300, "1");
+            this.newMap1 = new WeatherVis.LODGlyphMap('center-div-board', 100, 400, 400, 300, "2");
+            this.newMap2 = new WeatherVis.LODGlyphMap('center-div-board', 500, 100, 400, 300, "3");
+            this.newMap3 = new WeatherVis.LODGlyphMap('center-div-board', 500, 400, 400, 300, "4");
         }
-        TempVis.prototype.render = function () {
+        WeatherVisMain.prototype.updateViews = function () {
+            this.lodMap.loadGlyph();
+            this.lodMap.render();
+            this.newMap1.loadGlyph();
+            this.newMap1.render();
+            this.newMap2.loadGlyph();
+            this.newMap2.render();
+            this.newMap3.loadGlyph();
+            this.newMap3.render();
         };
-        return TempVis;
+        return WeatherVisMain;
     })();
-    WeatherVis.TempVis = TempVis;
+    WeatherVis.WeatherVisMain = WeatherVisMain;
 })(WeatherVis || (WeatherVis = {}));
-var temp = new WeatherVis.TempVis('map-div');
+var vis = new WeatherVis.WeatherVisMain('center-div');
 //# sourceMappingURL=weathervis.js.map
