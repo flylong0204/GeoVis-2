@@ -32,7 +32,6 @@ def getApcpForecast(request):
         apcp = np.ma.getdata(rootgrp.variables['apcp_fcst_ens'][100][:][:][:])
         rootgrp.close()
         
-        
         isoValues = [5, 10, 25]
         for index in isoValues:
             averageApcp = np.zeros((height, width), np.float32)
@@ -123,16 +122,22 @@ def generateCand(request):
             for w in range(width):
                 averageData[h][w] /= ens
     
-#     img = cv2.imread('E:/Geovis/weathervis/test.png')
-#     img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    candSelector = CandidateSelector(averageData)
-    candSelector.GenerateHierarchicalCandidates(candNumber)
+    #img = cv2.imread('E:/Geovis/weathervis/test.png')
+    #img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    img = np.zeros((height, width), np.uint8)
+    max_value = np.amax(averageData)
+    for h in range(height):
+        for w in range(width):
+            img[h][w] = np.uint8(averageData[h][w] / max_value * 255)
+    candSelector = CandidateSelector(img)
+    candSelector.GenerateKMeansCandidates(candNumber, 0.1)
     #save the data
     f = open('E:/GeoVis/weathervis/cand.txt', 'w')
     f.write(str(len(candSelector.candidates)) + "\n")
     for index in candSelector.candidates:
         f.write(str(index['x']) + "\n")
         f.write(str(index['y']) + "\n")
+        f.write(str(index['r']) + "\n")
     f.close()
     return HttpResponse('success')
 
@@ -160,6 +165,7 @@ def updateUncertaintyValues(request):
         cand = {}
         cand['x'] = float(f.readline())
         cand['y'] = float(f.readline())
+        cand['r'] = float(f.readline())
         candidatePos.append(cand)
     f.close()
     
@@ -222,6 +228,7 @@ def singleLevelOpt(request):
         cand = {}
         cand['x'] = float(f.readline())
         cand['y'] = float(f.readline())
+        cand['r'] = float(f.readline())
         candidatePos.append(cand)
     f.close()
     
@@ -297,6 +304,7 @@ def consistencyOpt(request):
         cand = {}
         cand['x'] = float(f.readline())
         cand['y'] = float(f.readline())
+        cand['r'] = float(f.readline())
         candidatePos.append(cand)
     f.close()
     
@@ -395,6 +403,7 @@ def getOptResult(request):
         cand = {}
         cand['x'] = float(f.readline())
         cand['y'] = float(f.readline())
+        cand['r'] = float(f.readline())
         candidatePos.append(cand)
     f.close()
     
@@ -413,7 +422,10 @@ def getOptResult(request):
     for i in range(siteNumber):
         if (levelResult[currentLevel - 1][i] == 1):
             glyphData = {}
-            glyphData['r'] = pow(2, int(i / candNumber)) * (lons_fcst[1][2] - lons_fcst[1][1])
+            r = pow(2, int(i / candNumber))
+            if r < candidatePos[i % candNumber]['r']:
+                r = candidatePos[i % candNumber]['r']
+            glyphData['r'] = r * (lons_fcst[1][2] - lons_fcst[1][1])
             x = int(float(candidatePos[i % candNumber]['x']))
             y = int(float(candidatePos[i % candNumber]['y']))
             glyphData['lon'] = float(lons_fcst[y][x])

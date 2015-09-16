@@ -33,6 +33,7 @@ class CandidateSelector:
                     newLabelIndex['x'] = w
                     newLabelIndex['y'] = h
                     newLabelIndex['nodeNum'] = 1
+                    newLabelIndex['r'] = 0
                     self.candidates.append(newLabelIndex)
                     seqIndex[currentLabel] = self.candidates.index(newLabelIndex)
                 else:
@@ -44,3 +45,11 @@ class CandidateSelector:
             if (index['nodeNum'] != 0):
                 index['x'] /= float(index['nodeNum'])
                 index['y'] /= float(index['nodeNum'])
+        for h in range(0, height):
+            for w in range(0, width):
+                currentLabel = self.pixelLabelIndex[h, w]
+                tempIndex = seqIndex[currentLabel]
+                self.candidates[tempIndex]['r'] += math.sqrt(pow(h - self.candidates[tempIndex]['y'], 2) + pow(w - self.candidates[tempIndex]['x'], 2))
+        for index in self.candidates:
+            if (index['nodeNum'] != 0):
+                index['r'] /= float(index['nodeNum'])

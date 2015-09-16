@@ -29,6 +29,10 @@ class OverlayProcessor:
                 tempS['x'] = self.candPos[j]['x']
                 tempS['y'] = self.candPos[j]['y']
                 tempS['level'] = i
+                if (self.candPos[j]['r'] > pow(2, i) / 2):
+                    tempS['min'] = 1e10
+                else:
+                    tempS['min'] = 0
                 self.S.append(tempS)
                 
         # update data uncertainty
@@ -49,6 +53,7 @@ class OverlayProcessor:
                 distance = math.sqrt(pow(cand['x'] - site['x'], 2) + pow(cand['y'] - site['y'], 2))
                 if (distance < pow(2, site['level']) / 2):
                     self.acc[i][j] = 1
+                    
                     
         self.fu = []
         for i in range(len(self.S)):
@@ -105,7 +110,7 @@ class OverlayProcessor:
         myNames = []
         for i in range(0, len(self.S)):
             zPara = 0
-            zPara = self.du[i]['var'] * self.alpha + self.fu[i]['var'] * self.beta + self.vu[i] * self.theta
+            zPara = self.du[i]['var'] * self.alpha + self.fu[i]['var'] * self.beta + self.vu[i] * self.theta + self.S[i]['min']
             print ("du: " + str(self.du[i]['var']) + "   fu: " + str(self.fu[i]['var']) + "   vu:" + str(self.vu[i]) + "\n")
             myObj.append(float(zPara))
             myUb.append(1)
