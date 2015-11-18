@@ -199,7 +199,6 @@ def updateUncertaintyValues(request):
     f.close()
     
     return HttpResponse('success')
-    
 
 def singleLevelOpt(request):
     # load parameters

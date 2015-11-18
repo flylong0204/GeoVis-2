@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^geovismain/', include('geovismain.urls', namespace="geovismain")),
     url(r'^weathervis/', include('weathervis.urls', namespace="weathervis")),
+    url(r'^scatter/', include('scatterdatareview.urls', namespace="scatterdatareview")),
 ]

@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'geovismain',
     'weathervis',
+    'scatterdatareview',
 )
 
 MIDDLEWARE_CLASSES = (

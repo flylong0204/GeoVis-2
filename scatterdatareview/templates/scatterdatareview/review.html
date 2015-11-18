@@ -1,0 +1,235 @@
+{% extends "main/layout.html" %}
+
+{% block content %}
+<div id="center-div" class="col-md-12">
+    <div id="center-div-board" class="col-md-8" align="center">
+        <div id="rendering-panel" class="col-md-12" align="center">
+            <h3>Rendering Panel</h3>
+        </div>
+        <div id="function-panel" class="col-md-12" align="center">
+            <button id="submit-button" class="btn btn-default" type="button" onclick="onSubmit">Submit</button>
+            <button id="next-button" class="btn btn-default" type="button" onclick="onNextTest">Next Test</button>
+        </div>
+    </div>
+    <div id="cluster-info-panel" class="col-md-4">
+        <h3>Cluster Panel</h3>
+        <div id="cluster-table"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="/static/jquery-2.0.3.js"></script>
+<script type="text/javascript" src="/static/three.min.js"></script>
+<script type="text/javascript" src="/static/d3.v3.js"></script>
+<script type="text/javascript" src="/static/scatterdatareview/scripts/pointrenderingcontrol.js"></script>
+<script type="text/javascript" src="/static/scatterdatareview/scripts/clustercontrol.js"></script>
+<script type="text/javascript">
+    var Dragging = function(){
+        var selectedObj = null;
+
+        function mousePressHandler(e) {
+            selectedObj = retrieveParentDiv(e.target);
+            if (selectedObj !== null){
+                var x = (e.clientX - pRen.left) / pRen.width * 1.2 - 0.1;
+                var y = (e.clientY - pRen.top) / pRen.height * 1.2 - 0.1;
+                pRen.addNewLine(x, y)
+            }
+        };
+        
+        function mouseMoveHandler(e) {
+            if (selectedObj !== null){
+                var x = (e.clientX - pRen.left) / pRen.width * 1.2 - 0.1;
+                var y = (e.clientY - pRen.top) / pRen.height * 1.2 - 0.1;
+                pRen.addPoint(x, y)
+            }
+        }
+
+        function mouseReleaseHandler(e) {
+            if (selectedObj !== null) {
+                pRen.completeLine();
+                selectedObj = null;
+            }
+        }
+        
+        function mouseWheelHandler(e) {
+            
+        };
+
+        function onWindowResize() {
+            pRen.update();
+        }
+        
+        return {
+            enable:function(){
+                document.addEventListener("mousedown", mousePressHandler);
+                document.addEventListener("mousemove", mouseMoveHandler);
+                document.addEventListener("mouseup", mouseReleaseHandler);
+                document.addEventListener("mousewheel", mouseWheelHandler);
+                window.addEventListener("resize", onWindowResize);
+            },
+            disable:function(){
+                document.removeEventListener("mousedown", mousePressHandler);
+                document.removeEventListener("mousemove", mouseMoveHandler);
+                document.removeEventListener("mouseup", mouseReleaseHandler);
+                document.removeEventListener("mousewheel", mouseWheelHandler);
+                window.removeEventListener("resize", onWindowResize);
+            }
+        }
+        
+        function retrieveParentDiv(obj){
+            while (obj !== null && obj.tagName !== "DIV")
+                obj = obj.parentNode;
+            return obj;
+        };
+    }
+    
+    Dragging().enable();
+</script>
+
+<script type="x-shader/x-vertex" id="vertexshader">
+    attribute vec3 ca;
+
+    varying vec3 vColor;
+
+    void main() {
+        vColor = ca;
+
+        vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+
+        gl_PointSize = 8.0;
+
+        gl_Position = projectionMatrix * mvPosition;
+
+    }
+
+</script>
+
+<script type="x-shader/x-fragment" id="fragmentshader">
+
+    uniform sampler2D texture;
+    varying vec3 vColor;
+
+    void main() {
+
+        vec4 color = vec4( vColor, 1.0 ) * texture2D( texture, gl_PointCoord );;
+
+        gl_FragColor = color;
+
+    }
+
+</script>
+
+<script type="text/javascript">
+    var container = document.getElementById("rendering-panel");
+    container.innerWidth = 800;
+    container.innerHeight = 600;
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.OrthographicCamera(-0.1, 1.1, -0.1, 1.1, 0.1, 1000 );
+
+    var renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setClearColor( 0xffffff, 0);
+    renderer.setSize( container.innerWidth, container.innerHeight );
+    container.appendChild( renderer.domElement );
+
+    pRen.width = container.innerWidth;
+    pRen.height = container.innerHeight;
+    pRen.dom = renderer.domElement;
+    pRen.update();
+
+    var lineMaterial = new THREE.LineBasicMaterial({
+        color: 0x0000ff
+    });
+
+    var texture = THREE.ImageUtils.loadTexture( "/static/scatterdatareview/disc.png" );
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    var pointMaterial = new THREE.ShaderMaterial( {
+                uniforms: {
+                    texture:   { type: "t", value: texture }
+                },
+                vertexShader:   document.getElementById( 'vertexshader' ).textContent,
+                fragmentShader: document.getElementById( 'fragmentshader' ).textContent,
+
+                blending:       THREE.AdditiveBlending,
+                depthTest:      false,
+                transparent:    true
+
+            });
+
+
+    camera.position.z = 5;
+
+    var render = function () {
+        requestAnimationFrame( render );
+
+        for (var i = scene.children.length - 1; i >= 0; i--) {
+            scene.remove(scene.children[i]);
+        }
+
+        if (cControl.dataset !== null) {
+            var positions = new Float32Array( cControl.dataset.length * 3 );
+            var colors = new Float32Array( cControl.dataset.length * 3 );
+
+            for (var i = 0; i < cControl.dataset.length; ++i) {
+                var point = cControl.dataset[i];
+                positions[3 * i] = point[0]
+                positions[3 * i + 1] = 1.0 - point[1];
+                positions[3 * i + 2] = 0.0;
+
+                colors[3 * i] = point[2] * 0.9;
+                colors[3 * i + 1] = point[2] * 0.9;
+                colors[3 * i + 2] = point[2] * 0.9;
+            }
+
+            var pointGeom = new THREE.BufferGeometry;
+            pointGeom.addAttribute( 'position', new THREE.BufferAttribute( positions, 3 ) );
+            pointGeom.addAttribute( 'ca', new THREE.BufferAttribute( colors, 3 ) );
+
+            var scatter_point = new THREE.Points(pointGeom, pointMaterial);
+            scene.add(scatter_point);
+        }
+
+        for (var i = 0; i < pRen.lines.length; i++) {
+            var lineGeom = new THREE.Geometry();
+            for (var j = 0; j < pRen.lines[i].length / 2; j++) {
+                var x = pRen.lines[i][j * 2];
+                var y = pRen.lines[i][j * 2 + 1];
+                lineGeom.vertices.push(new THREE.Vector3(x, y, 0));
+            }
+            if (pRen.lines[i].length !== 0) {
+                var x = pRen.lines[i][0];
+                var y = pRen.lines[i][1];
+                lineGeom.vertices.push(new THREE.Vector3(x, y, 0));
+            }
+            var line = new THREE.Line(lineGeom, lineMaterial);
+            scene.add(line);
+        }
+        renderer.render(scene, camera);
+    };
+    render();
+</script>
+
+<script type="text/javascript">
+    function onSubmit() {
+
+    }
+
+    function onNextTest() {
+
+    }
+
+    function onLoadData() {
+        var requestStr = '/scatter/getDataset?index=' + cControl.datasetIndex;
+        d3.json(requestStr, function updateData(data) {
+            var rawData = JSON.parse(data)
+            cControl.dataset = rawData;
+        }); 
+    }
+
+    onLoadData();
+</script>
+{% endblock %}
+
+</html>

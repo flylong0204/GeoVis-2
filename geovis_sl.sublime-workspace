@@ -135,126 +135,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "weathervis/static/weathervis/scripts/weathervis.ts",
-			"settings":
-			{
-				"buffer_size": 1120,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "weathervis/static/weathervis/scripts/lodglyphmap.ts",
-			"settings":
-			{
-				"buffer_size": 8445,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "library/typings/jqueryui/jqueryui-tests.ts",
-			"settings":
-			{
-				"buffer_size": 64939,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "weathervis/templates/weathervis/weathervis.html",
-			"settings":
-			{
-				"buffer_size": 8029,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/main/layout.html",
-			"settings":
-			{
-				"buffer_size": 1183,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "weathervis/urls.py",
-			"settings":
-			{
-				"buffer_size": 811,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "weathervis/views.py",
-			"settings":
-			{
-				"buffer_size": 21528,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/E/GeoVis/weathervis/cand.txt",
-			"settings":
-			{
-				"buffer_size": 3670,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/GitHub Project/DefinitelyTyped/jqueryui/jqueryui-tests.ts",
-			"settings":
-			{
-				"buffer_size": 64939,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/GeoVis/weathervis/unValue.txt",
-			"settings":
-			{
-				"buffer_size": 231753,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/GeoVis/weathervis/optresult.txt",
-			"settings":
-			{
-				"buffer_size": 6406,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/GitHub",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/GitHub Project/d3/src/geom/Project/d3/src/geom/geom.js",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/GeoVis/library/contour.js",
-			"settings":
-			{
-				"buffer_size": 1582,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/E/Data/data_importer.py",
-			"settings":
-			{
-				"buffer_size": 2603,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "Packages/User/typescript.sublime-build",
 	"command_palette":
@@ -288,11 +168,41 @@
 	},
 	"file_history":
 	[
-		"/E/BaiduYun/Paper Review/Reivew-Visual Steering and Modeling Environment for the Smart Grid.txt",
-		"/E/GeoVis/weathervis/cand.txt",
+		"/E/geovis/weathervis/static/weathervis/scripts/weathervis.ts",
+		"/E/geovis/weathervis/static/weathervis/scripts/lodglyphmap.ts",
+		"/E/geovis/library/typings/jqueryui/jqueryui-tests.ts",
 		"/E/geovis/weathervis/templates/weathervis/weathervis.html",
-		"/E/GeoVis/library/typings/jqueryui/jqueryui-tests.ts",
 		"/E/geovis/templates/main/layout.html",
+		"/E/geovis/weathervis/urls.py",
+		"/E/geovis/weathervis/views.py",
+		"/E/GeoVis/weathervis/cand.txt",
+		"/E/GitHub Project/DefinitelyTyped/jqueryui/jqueryui-tests.ts",
+		"/E/WrfAnalysisPlatform/WrfAnalysisPlatform/path.txt",
+		"/E/Opensource",
+		"/E/WrfAnalysisPlatform/WrfAnalysisPlatform/WrfVisualizationPlatform/gco-v3.0/example.cpp",
+		"/E/WrfAnalysisPlatform/WrfAnalysisPlatform/WrfVisualizationPlatform/gco-v3.0/GCO_README.TXT",
+		"/C/Users/Edgar/Desktop/tst.bat",
+		"/C/Users/Edgar/Desktop/tree.js",
+		"/E/BaiduYun/Paper Review/Reivew-Visual Steering and Modeling Environment for the Smart Grid.txt",
+		"/E/BaiduYun/Paper Review/TVCG/TVCG-2015-04-0099/Reivew-TVCG-2015-04-0099.txt",
+		"/E/BaiduYun/Paper Review/Review-Uncertainty Visualization by Representative Sampling from Prediction Ensembles.txt",
+		"/C/Users/Edgar/Downloads/360.txt",
+		"/E/thirdparty/vtk-6.0.0+qt-4.8.0+vs-2010/include/vtkOpenGLActor.h",
+		"/E/Eclipse_Workspace/error.txt",
+		"/E/Eclipse_Workspace/SurveySystem/README.md",
+		"/E/GeoVis/weathervis/unValue.txt",
+		"/E/GeoVis/weathervis/optresult.txt",
+		"/E/GitHub",
+		"/E/GitHub Project/d3/src/geom/Project/d3/src/geom/geom.js",
+		"/E/GeoVis/library/contour.js",
+		"/E/Data/data_importer.py",
+		"/C/Users/Edgar/Desktop/My Collection.bib",
+		"/C/Users/Edgar/Desktop/user-rule.txt",
+		"/E/Data/japan/timestep0_0000000.vtk",
+		"/E/Data/japan/QDataSetVTK.h",
+		"/E/WrfAnalysisPlatform/LICENSE",
+		"/E/Opensource Library/gco-v3.0/Library/gco-v3.0/example.cpp",
+		"/E/GeoVis/library/typings/jqueryui/jqueryui-tests.ts",
 		"/E/GeoVis/process/datadecompress.py",
 		"/E/geovis/weathervis/overlayprocessing.py",
 		"/E/GitHub Project/jqwidgets-ver3.8.2/ReadMe.txt",
@@ -314,7 +224,6 @@
 		"/E/GeoVis/weathervis/overlayprocessing.py",
 		"/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/G/WrfVisualizationPlatform/trunk/WrfAnalysisPlatform/WrfVisualizationPlatform/wrf_data_manager.cpp",
-		"/E/Data/data_importer.py",
 		"/E/iVisDesigner/server/ivapp/serializers.py",
 		"/E/iVisDesigner/server/ivapp/views.py",
 		"/E/GitHub Project/DefinitelyTyped/d3/d3-tests.ts",
@@ -327,9 +236,7 @@
 		"/E/Data/00_24/apcp/2002010200.apcp",
 		"/C/Python27/README.txt",
 		"/E/GeoVis/static/main/funcpanel.css",
-		"/E/geovis/weathervis/static/weathervis/scripts/lodglyphmap.ts",
 		"/E/GeoVis/geovismain/static/geovismain/scripts/renderingboard.ts",
-		"/E/geovis/weathervis/static/weathervis/scripts/weathervis.ts",
 		"/E/geovis/geovismain/static/geovismain/scripts/geovismain.ts",
 		"/E/GeoVis/geovismain/static/geovismain/scripts/utility.ts",
 		"/E/geovis/static/scripts/utility.ts",
@@ -343,8 +250,6 @@
 		"/E/geovis/weathervis/static/weathervis/scripts/streamgraph.ts",
 		"/E/geovis/library/typings/jquery/jquery.d.ts",
 		"/E/geovis/library/typings/d3/d3.d.ts",
-		"/E/geovis/weathervis/views.py",
-		"/E/GitHub",
 		"/E/GitHub Project/topojson/examples/README.md",
 		"/E/GitHub Project/topojson/topojson.js",
 		"/E/GitHub Project/topojson/index.js",
@@ -390,32 +295,7 @@
 		"/E/GeoVis/geovis_sl.sublime-workspace",
 		"/E/GeoVis/static/typings/library.d.ts",
 		"/E/GeoVis/library/typings/library.d.ts",
-		"/E/DefinitelyTyped/dagre-d3/dagre-d3-tests.ts",
-		"/E/DefinitelyTyped/d3/d3-tests.ts",
-		"/E/iVisDesigner/scripts/utils/events.js",
-		"/E/geovis/scripts/jquery.d.ts",
-		"/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/User/typescript.sublime-build",
-		"/E/geovis/scripts/core/property.ts",
-		"/E/geovis/library/three.d.ts",
-		"/E/DefinitelyTyped/threejs/three.d.ts",
-		"/E/geovis/library/three.js",
-		"/E/geovis/scripts/core/core.js",
-		"/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
-		"/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings",
-		"/C/Users/Edgar/AppData/Roaming/Sublime Text 2/Packages/TypeScript/TypeScript.tmLanguage",
-		"/E/reforecast15/video_for_paper/preview/vis15_withspeech/vis15_withspeech.html",
-		"/E/reforecast15/video_for_paper/preview/vis15_mac/vis15_mac.html",
-		"/C/Users/Edgar/Desktop/tts随心听(文字语音转换器) v10.2最新版/安装必看.txt",
-		"/E/reforecast15/video_for_paper/preview/vis15/vis15.html",
-		"/E/reforecast15/video_for_paper/preview/vis15_noau/vis15_noau.html",
-		"/E/Test/geovis/geovismain/views.py",
-		"/C/Users/Edgar/Downloads/eclipse-typescript-master/eclipse-typescript-master/README.md",
-		"/E/Web Learning/force.html",
-		"/E/Web Learning/test.html",
-		"/E/geovis/geovismain/static/scripts/jquery.d.ts",
-		"/E/iVisDesigner/scripts/core/objects/basic.js",
-		"/E/iVisDesigner/scripts/core/objects/component.js",
-		"/E/iVisDesigner/scripts/core/objects/geometry.js"
+		"/E/DefinitelyTyped/dagre-d3/dagre-d3-tests.ts"
 	],
 	"find":
 	{
@@ -498,419 +378,8 @@
 	"groups":
 	[
 		{
-			"selected": 8,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "weathervis/static/weathervis/scripts/weathervis.ts",
-					"settings":
-					{
-						"buffer_size": 1120,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "weathervis/static/weathervis/scripts/lodglyphmap.ts",
-					"settings":
-					{
-						"buffer_size": 8445,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 720.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "library/typings/jqueryui/jqueryui-tests.ts",
-					"settings":
-					{
-						"buffer_size": 64939,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								52803,
-								52803
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 21423.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "weathervis/templates/weathervis/weathervis.html",
-					"settings":
-					{
-						"buffer_size": 8029,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 990.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "templates/main/layout.html",
-					"settings":
-					{
-						"buffer_size": 1183,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1175,
-								1175
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "weathervis/urls.py",
-					"settings":
-					{
-						"buffer_size": 811,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "weathervis/views.py",
-					"settings":
-					{
-						"buffer_size": 21528,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/E/GeoVis/weathervis/cand.txt",
-					"settings":
-					{
-						"buffer_size": 3670,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3119,
-								3119
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/E/GitHub Project/DefinitelyTyped/jqueryui/jqueryui-tests.ts",
-					"settings":
-					{
-						"buffer_size": 64939,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2831,
-								2831
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 765.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "/E/GeoVis/weathervis/unValue.txt",
-					"settings":
-					{
-						"buffer_size": 231753,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 6885.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "/E/GeoVis/weathervis/optresult.txt",
-					"settings":
-					{
-						"buffer_size": 6406,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "/E/GitHub",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "/E/GitHub Project/d3/src/geom/Project/d3/src/geom/geom.js",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "/E/GeoVis/library/contour.js",
-					"settings":
-					{
-						"buffer_size": 1582,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								23,
-								30
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "/E/Data/data_importer.py",
-					"settings":
-					{
-						"buffer_size": 2603,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1764,
-								1764
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 315.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
