@@ -1,5 +1,19 @@
 {% extends "main/layout.html" %}
 
+{% block head %}
+    <style type="text/css">
+        .logout-containter {
+            text-align: right;
+        }
+    </style>
+{% endblock %}
+
+{% block menu %}
+<ul class="nav navbar-nav">
+    <li><a href="/scatter/logout">Logout</a></li>
+</ul>
+{% endblock %}
+
 {% block content %}
 <div id="center-div" class="col-md-12">
     <div id="center-div-board" class="col-md-8" align="center">
@@ -7,13 +21,26 @@
             <h3>Rendering Panel</h3>
         </div>
         <div id="function-panel" class="col-md-12" align="center">
-            <button id="submit-button" class="btn btn-default" type="button" onclick="onSubmit">Submit</button>
+            <button id="submit-button" class="btn btn-default" type="button" onclick="onSubmit()">Submit</button>
             <button id="next-button" class="btn btn-default" type="button" onclick="onNextTest">Next Test</button>
         </div>
     </div>
     <div id="cluster-info-panel" class="col-md-4">
         <h3>Cluster Panel</h3>
         <div id="cluster-table"></div>
+    </div>
+    <div id="color-picker-window">
+        <div id="color-picker-windowHeader">
+            <span>
+                <img src="../../images/movie.png" alt="" style="margin-right: 15px" />Picking Color
+            </span>
+        </div>
+        <div style="overflow: hidden;" id="windowContent">
+             <div id="colorPicker"></div>
+             <div>
+                <input type="button" value="Apply" id='color-apply-button' style="margin-top: 20px"/>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
@@ -22,23 +49,39 @@
 <script type="text/javascript" src="/static/jquery-2.0.3.js"></script>
 <script type="text/javascript" src="/static/three.min.js"></script>
 <script type="text/javascript" src="/static/d3.v3.js"></script>
-<script type="text/javascript" src="/static/scatterdatareview/scripts/pointrenderingcontrol.js"></script>
+<script type="text/javascript" src="/static/jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="/static/jqwidgets/jqxdata.js"></script>
+<script type="text/javascript" src="/static/jqwidgets/jqxbuttons.js"></script>
+<script type="text/javascript" src="/static/jqwidgets/jqxscrollbar.js"></script>
+<script type="text/javascript" src="/static/jqwidgets/jqxmenu.js"></script>
+<script type="text/javascript" src="/static/jqwidgets/jqxgrid.js"></script>
+<script type="text/javascript" src="/static/jqwidgets/jqxgrid.pager.js"></script>
+<script type="text/javascript" src="/static/jqwidgets/jqxgrid.selection.js"></script>
+<script type="text/javascript" src="/static/jqwidgets/jqxgrid.columnsresize.js"></script> 
+<script type="text/javascript" src="/static/jqwidgets/jqxgrid.sort.js"></script> 
+<script type="text/javascript" src="/static/jqwidgets/jqxcolorpicker.js"></script>
+<script type="text/javascript" src="/static/jqwidgets/jqxradiobutton.js"></script>
+<script type="text/javascript" src="/static/jqwidgets/jqxdropdownbutton.js"></script>
+<script type="text/javascript" src="/static/jqwidgets/jqxwindow.js"></script>
 <script type="text/javascript" src="/static/scatterdatareview/scripts/clustercontrol.js"></script>
+<script type="text/javascript" src="/static/scatterdatareview/scripts/pointrenderingcontrol.js"></script>
 <script type="text/javascript">
-    var Dragging = function(){
+    var Dragging = function() {
         var selectedObj = null;
 
         function mousePressHandler(e) {
             selectedObj = retrieveParentDiv(e.target);
-            if (selectedObj !== null){
+            if (selectedObj !== null && selectedObj.id == "rendering-panel") {
                 var x = (e.clientX - pRen.left) / pRen.width * 1.2 - 0.1;
                 var y = (e.clientY - pRen.top) / pRen.height * 1.2 - 0.1;
                 pRen.addNewLine(x, y);
+            } else {
+                selectedObj = null;
             }
         };
         
         function mouseMoveHandler(e) {
-            if (selectedObj !== null){
+            if (selectedObj !== null) {
                 var x = (e.clientX - pRen.left) / pRen.width * 1.2 - 0.1;
                 var y = (e.clientY - pRen.top) / pRen.height * 1.2 - 0.1;
                 pRen.addPoint(x, y);
@@ -47,9 +90,7 @@
 
         function mouseReleaseHandler(e) {
             if (selectedObj !== null) {
-                cControl.addCluster(pRen.currentLine);
-
-                pRen.completeLine();
+                $('#color-picker-window').jqxWindow('open');
                 selectedObj = null;
             }
         }
@@ -63,14 +104,14 @@
         }
         
         return {
-            enable:function(){
+            enable:function() {
                 document.addEventListener("mousedown", mousePressHandler);
                 document.addEventListener("mousemove", mouseMoveHandler);
                 document.addEventListener("mouseup", mouseReleaseHandler);
                 document.addEventListener("mousewheel", mouseWheelHandler);
                 window.addEventListener("resize", onWindowResize);
             },
-            disable:function(){
+            disable:function() {
                 document.removeEventListener("mousedown", mousePressHandler);
                 document.removeEventListener("mousemove", mouseMoveHandler);
                 document.removeEventListener("mouseup", mouseReleaseHandler);
@@ -79,7 +120,7 @@
             }
         }
         
-        function retrieveParentDiv(obj){
+        function retrieveParentDiv(obj) {
             while (obj !== null && obj.tagName !== "DIV")
                 obj = obj.parentNode;
             return obj;
@@ -207,12 +248,66 @@
 </script>
 
 <script type="text/javascript">
+    function updateClusterTable() {
+        var source = {
+            localdata: [],
+            datafields: [
+                {name: "ID", type: "number"},
+                {name: "Name", type: "string"},
+                {name: "PointCount", type: "number"},
+                {name: "Color", type: "string"},
+                {name: "Delete", type: "string"}],
+            datatype: "array"
+        };
+
+        source.localdata = cControl.getClusterData();
+
+        var dataAdapter = new $.jqx.dataAdapter(source);
+        var colorrenderer = function (row, datafield, value) {
+                return '<button type="button" class="btn btn-default" style="' + value +'" align="center"></button>';
+            }
+        var imagerenderer = function (row, datafield, value) {
+                return '<img style="margin-left: 5px;" height="30" width="40" src="/static/scatterdatareview/' + value + '"/>';
+            }
+       
+        $("#cluster-table").jqxGrid({
+            width: 400,
+            source: dataAdapter,
+            columnsresize: true,
+            sortable: false,
+            selectionmode: 'singlecell',
+            columns: [
+                { text: 'ID', datafield: 'ID', width: 40 },
+                { text: 'Name', datafield: 'Name', width: 100 },
+                { text: 'Point Count', datafield: 'PointCount', width: 100 },
+                { text: 'Color', datafield: 'Color', width: 100, cellsalign: 'center', align: 'center', cellsrenderer: colorrenderer},
+                { text: 'Delete', datafield: 'Delete', width: 100, cellsrenderer: imagerenderer, cellsalign: 'center', align: 'center'}
+            ]
+        });
+    }
+
     function onSubmit() {
-        
+        var clusterData = {
+            dataIndex: -1,
+            clusterCount: 0,
+            dataLabel: []
+        };
+        clusterData.dataIndex = cControl.datasetIndex;
+        clusterData.dataLabel = cControl.getFinalLabel();
+        clusterData.clusterCount = cControl.finalClusterCount;
+
+        $.ajax({
+            url:'/scatter/saveClusterData',
+            type: "POST",
+            data: clusterData,
+            success:function(response){},
+            complete:function(){},
+            error:function (xhr, textStatus, thrownError){}
+        });
     }
 
     function onNextTest() {
-        
+
     }
 
     function onLoadData() {
@@ -222,8 +317,44 @@
             cControl.dataset = rawData;
         }); 
     }
+</script>
 
-    onLoadData();
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#color-picker-window').jqxWindow({
+            showCollapseButton: true, maxHeight: 400, maxWidth: 300, minHeight: 400, minWidth: 300, height: 300, width: 300,
+            initContent: function () {
+                $('#color-picker-window').jqxWindow('focus');
+                $('#color-picker-window').jqxWindow('close');
+            }
+        });
+
+        $("#colorPicker").jqxColorPicker({ color: "ffaabb", colorMode: 'hue', width: 300, height: 300});
+        $("#colorPicker").on('colorchange', function (event) {
+            cControl.setCurrentColor(event.args.color);
+        });
+
+        $("#color-apply-button").jqxButton({ width: '280'});
+        // Subscribe to Click events.
+        $("#color-apply-button").on('click', function () {
+            $('#color-picker-window').jqxWindow('close');
+            cControl.addCluster(pRen.currentLine);
+            updateClusterTable();
+            pRen.completeLine();
+        });
+
+        $("#cluster-table").on('cellselect', function (event) {
+            var columnheader = $("#cluster-table").jqxGrid('getcolumn', event.args.datafield).text;
+            if (columnheader !== 'Delete') return;
+            var rowIndex = event.args.rowindex;
+            var id = $("#cluster-table").jqxGrid('getcellvalue', rowIndex, "ID");
+            cControl.removeCluster(id);
+            updateClusterTable();
+        });
+
+        onLoadData();
+        updateClusterTable();
+    });
 </script>
 {% endblock %}
 

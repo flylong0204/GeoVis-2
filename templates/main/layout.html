@@ -6,24 +6,28 @@
     <title>Weather Data Visualization</title>
     <link rel="stylesheet" type="text/css" href="/static/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="/static/jquery-ui.css" />
+    <link href="/static/jqwidgets/styles/jqx.base.css" rel="stylesheet">
+    <link href="/static/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet">
+    {% block head %}{% endblock %}
 </head>
 
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a href="/" class="navbar-brand">Application name</a>
+                <a href="/" class="navbar-brand">Data Visualization</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/weathervis/home">Home</a></li>
+                    <li class="navbar-brand">{{username}}</li>
                 </ul>
+                {% block menu %}{% endblock %}
             </div>
         </div>
     </div>
     
-    <div class="container-fluid" style="position:relative; top:50px;">
-		{% block content %}{% endblock %}
+    <div class="container-fluid" style="position:relative; top:50px;">	
+        {% block content %}{% endblock %}
     </div>
     
     <script type="text/javascript" src="/static/jquery-2.0.3.js"></script>

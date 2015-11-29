@@ -2,15 +2,99 @@ var ClusterControl = (function(){
     function ClusterControl() {
         this.datasetIndex = 0;
         this.dataset = null;
+        this.currentColor = {};
+        this.currentColor.r = 255.0;
+        this.currentColor.g = 0.0;
+        this.currentColor.b = 0.0;
 
         this.pointNum = 0;
         this.clusterNum = 0;
+        this.finalClusterCount = 0;
         this.clusterIndex = {};
     }
 
     ClusterControl.prototype.clear = function() {
         this.pointNum = 0;
         this.clusterIndex = {};
+    }
+
+    ClusterControl.prototype.getFinalLabel = function() {
+        var finalLabel = [];
+        for (var i = 0; i < this.dataset.length; ++i) finalLabel[i] = -1;
+        this.finalClusterCount = 0;
+        for (var i = 0; i < this.clusterNum; ++i) 
+            if (this.clusterIndex[i]) {
+                for (var j = 0; j < this.clusterIndex[i].pointCount; ++j) {
+                    var pIndex = this.clusterIndex[i].points[j];
+                    finalLabel[pIndex] = this.finalClusterCount;
+                }
+                this.finalClusterCount++;
+            }
+        var isUnlabeled = false;
+        for (var i = 0; i < this.dataset.length; ++i)
+            if (finalLabel[i] == -1) {
+                isUnlabeled = true;
+                finalLabel[i] = this.finalClusterCount;
+            }
+        if (isUnlabeled) this.finalClusterCount++;
+        return finalLabel;
+    }
+
+    ClusterControl.prototype.getClusterData = function() {
+        var cData = [];
+        for (var i = 0; i < this.clusterNum; ++i) 
+            if (this.clusterIndex[i]) {
+                var newCluster = {};
+                newCluster["Name"] = "Cluster";
+                newCluster["PointCount"] = this.clusterIndex[i].pointCount;
+                var colorStr = "RGB" + parseInt(this.clusterIndex[i].color[0] * 255) + "," 
+                                + parseInt(this.clusterIndex[i].color[1] * 255) + "," 
+                                + parseInt(this.clusterIndex[i].color[2] * 255);
+                
+                newCluster["Color"] = "background:" + colorStr.colorHex();
+                newCluster["Delete"] = "delete.png";
+                newCluster["ID"] = i;
+                cData.push(newCluster);
+            }
+        return cData;
+    }
+
+    var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;  
+    /*RGB颜色转换为16进制*/  
+    String.prototype.colorHex = function(){  
+        var that = this;  
+        if(/^(rgb|RGB)/.test(that)){  
+            var aColor = that.replace(/(?:||rgb|RGB)*/g,"").split(",");  
+            var strHex = "#";  
+            for(var i=0; i<aColor.length; i++){  
+                var hex = Number(aColor[i]).toString(16);  
+                if(hex === "0"){  
+                    hex += hex;   
+                }  
+                strHex += hex;  
+            }  
+            if(strHex.length !== 7){  
+                strHex = that;    
+            }  
+            return strHex;  
+        }else if(reg.test(that)){  
+            var aNum = that.replace(/#/,"").split("");  
+            if(aNum.length === 6){  
+                return that;      
+            }else if(aNum.length === 3){  
+                var numHex = "#";  
+                for(var i=0; i<aNum.length; i+=1){  
+                    numHex += (aNum[i]+aNum[i]);  
+                }  
+                return numHex;  
+            }  
+        }else{  
+            return that;      
+        }  
+    }
+
+    ClusterControl.prototype.setCurrentColor = function(color) {
+        this.currentColor = color;
     }
 
     ClusterControl.prototype.init = function(pointNum) {
@@ -22,9 +106,9 @@ var ClusterControl = (function(){
         cluster.pointCount = 0;
         cluster.points = [];
         cluster.color = [];
-        cluster.color[0] = Math.random();
-        cluster.color[1] = Math.random();
-        cluster.color[2] = Math.random();
+        cluster.color[0] = this.currentColor.r / 255.0;
+        cluster.color[1] = this.currentColor.g / 255.0;
+        cluster.color[2] = this.currentColor.b / 255.0;
         for (var i = 0; i < this.dataset.length; ++i) {
             var p = {};
             p.x = this.dataset[i][0];
@@ -34,12 +118,13 @@ var ClusterControl = (function(){
                 cluster.pointCount++;
             }
         }
+        if (cluster.pointCount == 0) return;
         this.clusterIndex[this.clusterNum] = cluster;
         this.clusterNum++;
     }
 
     ClusterControl.prototype.removeCluster = function(id) {
-        delete this.clusterIndex(id);
+        delete this.clusterIndex[id];
     }
 
     ClusterControl.prototype.getPointColor = function() {
@@ -52,7 +137,7 @@ var ClusterControl = (function(){
         }
 
         for (var i = 0; i < this.clusterNum; ++i) 
-            if (this.clusterIndex[i] !== null) {
+            if (this.clusterIndex[i]) {
                 for (var j = 0; j < this.clusterIndex[i].pointCount; ++j) {
                     var pIndex = this.clusterIndex[i].points[j];
                     colors[3 * pIndex] = this.clusterIndex[i].color[0];

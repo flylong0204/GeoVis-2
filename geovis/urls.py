@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^geovismain/', include('geovismain.urls', namespace="geovismain")),
     url(r'^weathervis/', include('weathervis.urls', namespace="weathervis")),
     url(r'^scatter/', include('scatterdatareview.urls', namespace="scatterdatareview")),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

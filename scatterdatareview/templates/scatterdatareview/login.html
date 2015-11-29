@@ -1,0 +1,36 @@
+{% extends "main/layout.html" %}
+{% block head %}
+    <style type="text/css">
+        .login-containter {
+            display: table;
+            vertical-align: middle;
+            top: 300px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-6 col-md-offset-3 login-containter">
+        <form action="/scatter/auth/" method="post">{% csrf_token %}
+            <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-addon" id="label_name">Username:</span>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="username">
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-addon" id="label_pass">Password:</span>
+                    <input type="text" name="password" id="password" class="form-control" placeholder="password">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-default">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-6 col-md-offset-3 login-containter">
+        <h4 align="center"> If you haven't registered before, please <a href="/scatter/register">register</a> first.</h4>
+    </div>
+{% endblock %}

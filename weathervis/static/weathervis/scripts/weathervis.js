@@ -23,6 +23,7 @@ var WeatherVis;
         };
         return WeatherVisMain;
     })();
+    
     WeatherVis.WeatherVisMain = WeatherVisMain;
 })(WeatherVis || (WeatherVis = {}));
 var vis = new WeatherVis.WeatherVisMain('center-div');
